@@ -5,6 +5,7 @@ import jsPDF from "jspdf";
 import emailjs from "@emailjs/browser";
 import { Navbar } from "react-bootstrap";
 import "./index.css";
+import StudentsTable from "./StudentsTable";
 const SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
 
 const GetStudentsDetails = () => {
@@ -92,7 +93,6 @@ const GetStudentsDetails = () => {
         const currentUser = authInstance.currentUser.get();
         const basicProfile = currentUser.getBasicProfile();
         const email = basicProfile.getEmail();
-
         setUserEmail(email);
       }
     };
@@ -100,7 +100,7 @@ const GetStudentsDetails = () => {
     loadGoogleAPI();
   }, []);
 
-  sheetData.map((item) => {
+  sheetData.map((item, index) => {
     console.log("b", item);
     let Java_Score = 0;
     let Operating_System_Score = 0;
@@ -153,6 +153,7 @@ const GetStudentsDetails = () => {
       }
     });
 
+    item.id = index + 1; // Add the "id" key with the value of the current index plus 1
     item.Score =
       (
         Java_Score +
@@ -315,7 +316,7 @@ const GetStudentsDetails = () => {
           )}
         </p>
       </div>
-      {isSignedIn && filteredData.length > 0 && (
+      {isSignedIn && sheetData.length > 0 && (
         <div>
           <div className='display-center'>
             <div className='display-between'>
@@ -339,47 +340,7 @@ const GetStudentsDetails = () => {
           </div>
           <div>
             {Array.isArray(sheetData) && filteredData.length > 0 ? (
-              <table className='table table-striped m-3'>
-                <thead>
-                  <tr>
-                    <th>Id</th>
-                    <th>Completed On</th>
-                    <th>Email</th>
-                    <th>Score</th>
-                    <th>Profiles</th>
-                    {/* <th>Download Score</th> */}
-                    <th>Send Score</th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  {filteredData.map((item, index) => (
-                    <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>{item.Timestamp}</td>
-                      <td>{item.Email}</td>
-                      <td>{item.Score}</td>
-                      <td>
-                        <button
-                          onClick={() =>
-                            navigate("/studentProfile", { state: item })
-                          }
-                        >
-                          View Profile
-                        </button>
-                      </td>
-                      {/* <td>
-                        <button onClick={() => createPdf(item)}>
-                          Download
-                        </button>
-                      </td> */}
-                      <td>
-                        <button onClick={() => sendScore(item)}>Send</button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              <StudentsTable data={sheetData} />
             ) : (
               <div>No data available</div>
             )}

@@ -6,8 +6,6 @@ import TestInstructions from "./components/StudentComponent/TestInstructions";
 import GetStudentsDetails from "./components/AdminComponent/GetStudentDetails";
 
 function App() {
-  const [studentDetails, setStudentDetails] = useState([]);
-
   return (
     <BrowserRouter>
       <Routes>
