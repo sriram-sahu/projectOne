@@ -4,7 +4,7 @@ import { gapi } from "gapi-script";
 import jsPDF from "jspdf";
 import emailjs from "@emailjs/browser";
 import { Navbar } from "react-bootstrap";
-
+import "./index.css";
 const SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
 
 const GetStudentsDetails = () => {
@@ -318,7 +318,7 @@ const GetStudentsDetails = () => {
       {isSignedIn && filteredData.length > 0 && (
         <div>
           <div className='display-center'>
-            <div>
+            <div className='display-between'>
               Start Date:{" "}
               <input
                 type='date'
