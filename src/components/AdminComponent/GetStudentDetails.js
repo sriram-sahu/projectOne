@@ -153,7 +153,7 @@ const GetStudentsDetails = () => {
       }
     });
 
-    item.id = index + 1; // Add the "id" key with the value of the current index plus 1
+    item.id = index + 1;
     item.Score =
       (
         Java_Score +
@@ -168,109 +168,6 @@ const GetStudentsDetails = () => {
     item.Javascript_Score = Javascript_Score;
     item.React_Score = React_Score;
   });
-
-  function createPdf(item) {
-    var doc = new jsPDF("landscape", "px", "a4", false);
-    doc.rect(20, 20, 600, 400, "D");
-    doc.setLineWidth(2);
-    doc.setDrawColor(255, 0, 0);
-    doc.setFillColor(0, 255, 0);
-
-    doc.text(
-      60,
-      60,
-      "TestCompleted: " +
-        item.Timestamp +
-        "\n" +
-        "\n" +
-        "Email: " +
-        item.Email +
-        "\n" +
-        "\n" +
-        "Score: " +
-        item.Score +
-        "\n" +
-        "\n" +
-        "Java Score : " +
-        item.Java_Score +
-        "\n" +
-        "\n" +
-        "React Score : " +
-        item.React_Score +
-        "\n" +
-        "\n" +
-        "JavaScript Score : " +
-        item.Javascript_Score +
-        "\n" +
-        "\n" +
-        "Operating System Score : " +
-        item.Operating_System_Score
-    );
-    doc.save("result.pdf");
-  }
-
-  const sendScore = (item) => {
-    var document = new jsPDF("landscape", "px", "a4", false);
-    document.rect(20, 20, 600, 400, "D");
-    document.setLineWidth(2);
-    document.setDrawColor(255, 0, 0);
-    document.setFillColor(0, 255, 0);
-    document.text(
-      60,
-      60,
-      "TestCompleted: " +
-        item.Timestamp +
-        "\n" +
-        "\n" +
-        "Email: " +
-        item.Email +
-        "\n" +
-        "\n" +
-        "Score: " +
-        item.Score +
-        "\n" +
-        "\n" +
-        "Java Score : " +
-        item.Java_Score +
-        "\n" +
-        "\n" +
-        "React Score : " +
-        item.React_Score +
-        "\n" +
-        "\n" +
-        "JavaScript Score : " +
-        item.Javascript_Score +
-        "\n" +
-        "\n" +
-        "Operating System Score : " +
-        item.Operating_System_Score
-    );
-
-    const pdfContent = document.output("datauristring");
-
-    let message = `Hello ${item.Email} \n \n Here Your result Details \n \n ${pdfContent}`;
-
-    emailjs
-      .send(
-        "service_lambt8e",
-        "template_1snfqxn",
-        {
-          to_name: item.Email,
-          from_name: "sriram",
-          message:
-            "https://www.youtube.com/watch?v=5Vp4RVLNo3c&ab_channel=Cybernatico",
-          to_email: item.Email,
-        },
-        "97pI7JWf7O5EPMjAH"
-      )
-      .then((result) => {
-        console.log("Email sent successfully:", result.text);
-        alert(`Email sent to ${item.Email}`);
-      })
-      .catch((error) => {
-        console.error("Error sending email:", error);
-      });
-  };
 
   const handleSignIn = () => {
     const authInstance = window.gapi.auth2.getAuthInstance();
@@ -311,7 +208,13 @@ const GetStudentsDetails = () => {
           ) : (
             <div className='display-column'>
               <h2>Login With Google</h2>
-              <button onClick={handleSignIn}>Sign In with Google</button>
+              <button onClick={handleSignIn} className='google-signin-button'>
+                <img
+                  src='https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg'
+                  alt='Google Logo'
+                />
+                Sign In with Google
+              </button>
             </div>
           )}
         </p>

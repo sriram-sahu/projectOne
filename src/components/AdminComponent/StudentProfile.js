@@ -1,7 +1,5 @@
 import React, { useRef } from "react";
 import { useLocation } from "react-router";
-import StudentPieChart from "./StudentPieChart";
-import Chat from "./StudentChart";
 import { useReactToPrint } from "react-to-print";
 import Barchart from "./BarCharts";
 import Navbar from "../design/Navbar";
@@ -10,7 +8,6 @@ const StudentProfile = () => {
   const location = useLocation();
   const detailsPdf = useRef();
   const item = location.state;
-  console.log("a", item);
   const {
     Email,
     Score,
