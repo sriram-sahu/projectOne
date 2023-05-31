@@ -13,7 +13,7 @@ export default function StudentsTable(props) {
 
   const updateScore = (item) => {
     console.log(item.Total_Score, "hghj");
-    if (item.Total_Score === "") {
+    if (item.Total_Score === undefined) {
       console.log(item.Timestamp, "sri");
       fetch(`https://sheetdb.io/api/v1/lwkpk0h10tyzh/Email/${item.Email}`, {
         method: "PATCH",
@@ -110,7 +110,7 @@ export default function StudentsTable(props) {
     { field: "Email", headerName: "Email", width: 300 },
     {
       field: "Score",
-      headerName: "Score",
+      headerName: "Score (20)",
       width: 150,
     },
     {

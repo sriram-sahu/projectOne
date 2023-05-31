@@ -79,6 +79,7 @@ const GetStudentsDetails = () => {
             });
             return item;
           });
+          console.log(jsonData, "json");
           setSheetData(jsonData);
           setFilteredData(jsonData);
         })
@@ -153,20 +154,16 @@ const GetStudentsDetails = () => {
     });
 
     item.id = index + 1;
-    item.Score =
-      (
-        Java_Score +
-        Operating_System_Score +
-        Javascript_Score +
-        React_Score
-      ).toString() +
-      "/" +
-      JSON.parse(process.env.REACT_APP_NO_OF_QUESTIONS);
+    item.Score = (
+      Java_Score +
+      Operating_System_Score +
+      Javascript_Score +
+      React_Score
+    ).toString();
     item.Java_Score = Java_Score;
     item.Operating_System_Score = Operating_System_Score;
     item.Javascript_Score = Javascript_Score;
     item.React_Score = React_Score;
-    item.Total_Score = "";
   });
 
   const handleSignIn = () => {
