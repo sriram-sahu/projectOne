@@ -101,7 +101,6 @@ const GetStudentsDetails = () => {
   }, []);
 
   sheetData.map((item, index) => {
-    console.log("b", item);
     let Java_Score = 0;
     let Operating_System_Score = 0;
     let Javascript_Score = 0;
@@ -167,13 +166,14 @@ const GetStudentsDetails = () => {
     item.Operating_System_Score = Operating_System_Score;
     item.Javascript_Score = Javascript_Score;
     item.React_Score = React_Score;
+    item.Total_Score = "";
   });
 
   const handleSignIn = () => {
     const authInstance = window.gapi.auth2.getAuthInstance();
     authInstance.signIn().catch((error) => {
       if (error.error === "popup_closed_by_user") {
-        // Handle the canceled sign-in process
+        console.error("Popup Closed By the User", error);
       } else {
         console.error("Error signing in with Google", error);
         // Handle other sign-in errors

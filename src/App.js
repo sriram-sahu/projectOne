@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PsychoMetricText from "./components/StudentComponent/PsychometricText";
-import { useState } from "react";
 import StudentProfile from "./components/AdminComponent/StudentProfile";
 import TestInstructions from "./components/StudentComponent/TestInstructions";
 import GetStudentsDetails from "./components/AdminComponent/GetStudentDetails";

@@ -11,6 +11,36 @@ export default function StudentsTable(props) {
   const { data } = props;
   const navigate = useNavigate();
 
+  const updateScore = (item) => {
+    console.log(item.Total_Score, "hghj");
+    if (item.Total_Score === "") {
+      console.log(item.Timestamp, "sri");
+      fetch(`https://sheetdb.io/api/v1/lwkpk0h10tyzh/Email/${item.Email}`, {
+        method: "PATCH",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: "Bearer 8zkvfpdud4jcdq3a2aenrr60f62m6687ob1k9omp",
+        },
+        body: JSON.stringify({
+          data: {
+            Javascript_Score: item.Javascript_Score,
+            Java_Score: item.Java_Score,
+            React_Score: item.React_Score,
+            Operating_System_Score: item.Operating_System_Score,
+            Total_Score:
+              item.Javascript_Score +
+              item.Java_Score +
+              item.Operating_System_Score +
+              item.React_Score,
+          },
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => console.log(data));
+    }
+  };
+
   const handleSendMail = (item) => {
     var document = new jsPDF("landscape", "px", "a4", false);
     document.rect(20, 20, 600, 400, "D");
@@ -92,7 +122,10 @@ export default function StudentsTable(props) {
         <Button
           variant='outlined'
           color='primary'
-          onClick={() => navigate("/studentProfile", { state: params.row })}
+          onClick={() => {
+            navigate("/studentProfile", { state: params.row });
+            updateScore(params.row);
+          }}
         >
           View Profile
         </Button>
