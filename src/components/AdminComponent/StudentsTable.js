@@ -13,8 +13,6 @@ export default function StudentsTable(props) {
 
   const updateScore = (item) => {
     if (item.Total_Score === undefined) {
-      console.log(item.Total_Score, "hghj");
-      console.log(item.Timestamp, "sri");
       fetch(`https://sheetdb.io/api/v1/lwkpk0h10tyzh/Email/${item.Email}`, {
         method: "PATCH",
         headers: {

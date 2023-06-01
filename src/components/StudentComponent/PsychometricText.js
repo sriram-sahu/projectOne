@@ -1,10 +1,8 @@
 import React from "react";
-import Navbar from "../design/Navbar";
 
 const PsychoMetricText = () => {
   return (
     <div>
-      <Navbar />
       <div className='details-container'>
         <div>
           <div>

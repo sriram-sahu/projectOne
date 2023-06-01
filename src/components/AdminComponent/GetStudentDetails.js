@@ -177,6 +177,7 @@ const GetStudentsDetails = () => {
       }
     });
   };
+
   const handleFilter = () => {
     const filtered = sheetData.filter((item) => {
       const itemDate = new Date(item.Timestamp);
@@ -194,7 +195,6 @@ const GetStudentsDetails = () => {
 
   return (
     <div>
-      <Navbar />
       <div>
         <p>
           {isSignedIn ? (

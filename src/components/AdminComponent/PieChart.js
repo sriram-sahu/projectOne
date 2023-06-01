@@ -2,7 +2,7 @@ import React from "react";
 
 // import {Chart} from 'react-google-charts'
 import Chart from "react-apexcharts";
-const Chat = (props) => {
+const PieChart = (props) => {
   const { Operating_System_Score, React_Score, Java_Score, Javascript_Score } =
     props;
   const a = (Java_Score / 5) * 100;
@@ -24,4 +24,4 @@ const Chat = (props) => {
   );
 };
 
-export default Chat;
+export default PieChart;

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Navbar } from "react-bootstrap";
 import "./index.css";
 
 const TestInstructions = () => {
@@ -23,7 +22,6 @@ const TestInstructions = () => {
 
   return (
     <div>
-      <Navbar />
       <div className='test-instructions'>
         <div>
           <h2>Online Test Instructions</h2>

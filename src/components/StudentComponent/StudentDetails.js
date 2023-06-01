@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./index.css";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../design/Navbar";
+
 import MyContext from "../../context/context";
 
 const StudentDetails = (props) => {
@@ -29,7 +29,6 @@ const StudentDetails = (props) => {
   };
   return (
     <div>
-      <Navbar />
       <div className='details-container'>
         <form className='forms-container' onSubmit={onSubmitDetails}>
           <h1 className='heading'>Enter Your Details</h1>

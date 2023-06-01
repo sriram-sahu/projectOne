@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { useLocation } from "react-router";
 import { useReactToPrint } from "react-to-print";
 import Barchart from "./BarCharts";
-import Navbar from "../design/Navbar";
+import PieChart from "./PieChart";
 
 const StudentProfile = () => {
   const location = useLocation();
@@ -27,7 +27,6 @@ const StudentProfile = () => {
 
   return (
     <div>
-      <Navbar />
       <div className='p-3' ref={detailsPdf}>
         {console.log(item)}
         <h1>Student Details</h1>
@@ -37,13 +36,13 @@ const StudentProfile = () => {
         <p>Interests Score : {interests_score}</p>
         <p>Aptitude Score : {aptitude_score}</p>
         <div>
-          {/* <Chat
+          <PieChart
             Score={Score}
             Java_Score={Java_Score}
             Operating_System_Score={Operating_System_Score}
             Javascript_Score={Javascript_Score}
             React_Score={React_Score}
-          /> */}
+          />
           {console.log("barChart")}
           <Barchart itemDetails={item} />
         </div>
