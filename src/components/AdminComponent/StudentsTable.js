@@ -13,12 +13,12 @@ export default function StudentsTable(props) {
 
   const updateScore = (item) => {
     if (item.Total_Score === undefined) {
-      fetch(`https://sheetdb.io/api/v1/lwkpk0h10tyzh/Email/${item.Email}`, {
+      fetch(`${process.env.REACT_APP_SHEETDB_API_URL}/Email/${item.Email}`, {
         method: "PATCH",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: "Bearer 8zkvfpdud4jcdq3a2aenrr60f62m6687ob1k9omp",
+          Authorization: `Bearer ${process.env.REACT_APP_SHEETDB_API_KEY}`,
         },
         body: JSON.stringify({
           data: {
@@ -82,16 +82,15 @@ export default function StudentsTable(props) {
 
     emailjs
       .send(
-        "service_lambt8e",
-        "template_1snfqxn",
+        process.env.REACT_APP_EMAILJS_SERVICE_ID,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
         {
           to_name: item.Email,
-          from_name: "sriram",
-          message:
-            "https://www.youtube.com/watch?v=5Vp4RVLNo3c&ab_channel=Cybernatico",
+          from_name: "kloc",
+          message: message,
           to_email: item.Email,
         },
-        "97pI7JWf7O5EPMjAH"
+        process.env.REACT_APP_EMAILJS_API_KEY
       )
       .then((result) => {
         console.log("Email sent successfully:", result.text);

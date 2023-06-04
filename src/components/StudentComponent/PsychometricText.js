@@ -7,6 +7,7 @@ const PsychoMetricText = () => {
         <div>
           <div>
             <iframe
+              title='Google Form'
               src='https://docs.google.com/forms/d/e/1FAIpQLSdFjj1yaEfqFu0RbZkcDf8D3E92LJyZCYGtBlzURhEdXmPvvQ/viewform?embedded=true'
               width='640'
               height='5154'

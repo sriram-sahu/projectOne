@@ -2,12 +2,9 @@ import React, { useEffect, useState } from "react";
 import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
 import { useNavigate } from "react-router-dom";
 import { gapi } from "gapi-script";
-import jsPDF from "jspdf";
-import emailjs from "@emailjs/browser";
-import { Navbar } from "react-bootstrap";
 import "./index.css";
 import StudentsTable from "./StudentsTable";
-const SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
+const SCOPES = process.env.REACT_APP_SCOPE;
 
 const GetStudentsDetails = () => {
   const [sheetData, setSheetData] = useState([]);
@@ -31,7 +28,7 @@ const GetStudentsDetails = () => {
   useEffect(() => {
     const loadGoogleAPI = () => {
       const script = document.createElement("script");
-      script.src = "https://apis.google.com/js/api.js";
+      script.src = process.env.REACT_APP_SCRIPT_SRC;
       script.onload = initializeGoogleAPI;
       document.head.appendChild(script);
     };
@@ -48,7 +45,7 @@ const GetStudentsDetails = () => {
           scope: SCOPES,
           discoveryDocs: [
             "https://sheets.googleapis.com/$discovery/rest?version=v4",
-          ],
+          ], // don't write this in env file
         })
         .then(() => {
           console.log("Google API client initialized");
@@ -112,7 +109,7 @@ const GetStudentsDetails = () => {
     loadGoogleAPI();
   }, []);
 
-  const fetchingdat = () => {
+  const fetchingData = () => {
     let java = 0;
     let ma_order = JSON.parse(process.env.REACT_APP_MA_ORDER);
     let ma_answers = JSON.parse(process.env.REACT_APP_MA_ANSWERS);
@@ -188,7 +185,7 @@ const GetStudentsDetails = () => {
     //
   };
   useEffect(() => {
-    fetchingdat();
+    fetchingData();
   }, [sheetData]);
 
   sheetData.map((item, index) => {
@@ -273,6 +270,7 @@ const GetStudentsDetails = () => {
       const itemDate = new Date(item.Timestamp);
       const start = new Date(startDate);
       const end = new Date(endDate);
+      end.setDate(end.getDate() + 1); // Added one day to the end date
       return itemDate >= start && itemDate <= end;
     });
     setFilteredData(filtered);
