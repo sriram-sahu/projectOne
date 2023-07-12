@@ -13,11 +13,12 @@ function TestReport(props) {
   const location = useLocation();
   // useState of data to store stream recommendation test data responses
   const [data, setData] = useState(
-    (datat || []).map((field, index) => ({
+    ([...datat].reverse() || []).map((field, index) => ({
       ...field,
       id: index + 1, // Adding 1 to index to make IDs start from 1
     }))
   );
+
   // navigate variable used to naviagating to different routes
   const navigate = useNavigate();
   // usestate of search to store search data

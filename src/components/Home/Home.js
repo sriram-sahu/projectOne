@@ -98,6 +98,7 @@ function Home() {
         <div
           style={{
             display: "flex",
+            flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
             color: "#010000",
@@ -106,6 +107,7 @@ function Home() {
           }}
         >
           <h1 style={{ color: "#111359" }}>Welcome to Study Global</h1>
+          <h1 style={{ color: "#111359" }}>OverSeas Education Consultants</h1>
         </div>
       </div>
       <Footer />
