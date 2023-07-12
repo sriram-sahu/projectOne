@@ -211,7 +211,7 @@ function StudentBarChart() {
         </div>
         {/* table with low, medium and high interest of all streams aptitude and interest scores data */}
         <div ref={detailsPdf}>
-          <h1 className='rank-heading'>Stream Recommendation Rank</h1>
+          <h1 className='rank-heading'>Stream Recommendation</h1>
           <div className='barchart-student-container'>
             <h1 className='student-details-heading'>Student Details</h1>
             <div className='barchart-student-details-container'>
