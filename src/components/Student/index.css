@@ -1,0 +1,133 @@
+/* Test component css */
+.details-container {
+  min-height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:100%;
+  color:'#010000';
+}
+/* TestInstructions component css */
+.test-instructions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding:30px;
+  text-align: center;
+  height:100vh;
+  color:'#010000';
+}
+.heading{
+  font-size: 35px;
+  color:'#010000';
+}
+.instruction-container {
+  margin: auto;
+  text-align: left;
+  height:450px;
+  width:800px;
+  background-color: antiquewhite;
+  border-radius: 10px;
+  overflow-y: scroll;
+  padding: 20px;
+  margin-bottom: 10px;
+  color:'#010000';
+}
+.instruction-heading{
+  font-Size:30px;
+  text-align: center;
+  color:'#010000';
+  text-decoration: underline;
+}
+.good-luck{
+  font-Size:30px;
+  color:'#010000';
+}
+.instructions {
+  font-size: 18px;
+}
+.label{
+  font-size: 20px;
+  color:'#010000';
+}
+@media screen and (min-height:800px){
+  .test-instructions{
+    height:700px;
+  }
+}
+@media screen and (max-width:910px){
+  .instruction-container{
+      width:600px;
+  }
+}
+@media screen and (max-width:570px){
+  .instruction-container{
+      width:400px;
+  }
+  .heading{
+      font-size: 25px;
+  }
+}
+@media screen and (max-width:450px){
+  .instruction-container{
+      width:330px;
+  }
+  .heading{
+      font-size: 24px;
+      margin-right: 40px;
+      margin-left:30px;
+  }
+  .instruction-heading{
+    font-size: 28px;
+  }
+  .good-luck{
+    font-size: 28px;
+  }
+  .instructions{
+    font-size: 18px;
+  }
+}
+@media screen and (max-width:395px){
+  .heading{
+    font-size: 22px;
+  }
+}
+@media screen and (max-width:300px){
+  .instruction-container{
+      width:250px;
+  }
+  .heading{
+      font-size: 20px;
+  }
+  .instruction-heading{
+    font-size: 20px;
+  }
+  .good-luck{
+    font-size: 20px;
+  }
+  .instructions{
+    font-size: 16px;
+  }
+  .label{
+    font-size: 15px;
+  }
+}
+.start-button{
+  margin-left: 10px;
+  background-color: #004461;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  color:#FFFFFF;
+  font-size: 15px;
+}
+.not-start-button{
+  margin-left: 10px;
+  background-color: grey;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  color:#FFFFFF;
+  font-size: 15px;
+}
