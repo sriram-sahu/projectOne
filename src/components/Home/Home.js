@@ -101,7 +101,7 @@ function Home() {
             justifyContent: "center",
             alignItems: "center",
             color: "#010000",
-            backgroundImage: "linear-gradient(to top, #feada6, #f5efef)",
+            backgroundColor: "#aed9f5",
             height: "100vh",
           }}
         >
