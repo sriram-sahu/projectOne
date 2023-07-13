@@ -94,7 +94,7 @@ function Chart() {
   const onClickSendManually = (data) => {
     console.log(data);
     const subject = "Stream Recommendation Test Score Details"; // email subject
-    const body = `Dear ${data.Full_Name},%0D%0A %0D%0A     Hope you are doing well. Your Stream Recommendation Test has been submitted successfully. We are providing your test scores in the below table. Please check it and if any queries revert back to our email. %0D%0A %0D%0A `; // email  body
+    const body = `Dear ${data.Full_Name},%0D%0A %0D%0A     Hope you are doing well. Your Strem Recommendation Test submission was successful. Here is your test score. We will share the detailed score report and discuss the stream that is best suited for you over a call. %0D%0A %0D%0AYour Stream Recommendation Test Scores: %0D%0A %0D%0A`; // email  body
     window.location.href = `mailto:${data.Email_Address}?cc=${data.Parent_Email_Id}&subject=${subject}&body=${body}`;
   };
 
