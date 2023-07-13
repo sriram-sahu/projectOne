@@ -41,7 +41,7 @@ table td {
 
 table {
   width: 100%;
-  margin-top: 20px;
+  margin-bottom: 20px;
   border-collapse: collapse;
 }
 
@@ -443,7 +443,6 @@ th {
   text-align: center;
   margin-top: 20px;
   font-size: 40px;
-  margin-bottom: 20px;
 }
 .student-details-heading {
   font-size: 28px;
@@ -459,6 +458,7 @@ th {
   width: 80%;
   margin: auto;
   padding: 5px;
+  margin-bottom: 20px;
 }
 .barchart-student-details-container {
   display: flex;
