@@ -107,7 +107,7 @@ function Home() {
           }}
         >
           <h1 style={{ color: "#111359" }}>Welcome to Study Global</h1>
-          <h1 style={{ color: "#111359" }}>OverSeas Education Consultants</h1>
+          <h1 style={{ color: "#111359" }}>Overseas Education Consultants</h1>
         </div>
       </div>
       <Footer />

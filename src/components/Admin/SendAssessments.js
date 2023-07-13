@@ -181,7 +181,7 @@ function SendAssessments(props) {
               className='radio'
             />
             <label htmlFor='manual' className='label'>
-              Enter Email Id's
+              Enter Email Ids
             </label>
             <br />
             {mailSentType !== "" && (

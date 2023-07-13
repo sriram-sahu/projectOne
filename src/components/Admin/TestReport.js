@@ -441,7 +441,7 @@ function TestReport(props) {
                           handleUpdate(item);
                         }}
                       >
-                        View Score
+                        View Report
                       </button>
                     </div>
                     {/* clicking view Data button it'll navigates to studentBarChart route */}
@@ -453,7 +453,7 @@ function TestReport(props) {
                           navigate("/studentBarChart", { state: item })
                         }
                       >
-                        View Data
+                        View Details
                       </button>
                     </div>
                   </div>

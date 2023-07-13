@@ -227,10 +227,10 @@ function StudentBarChart() {
           </div>
           <div className='barchart-container-responsive'>
             <div className='tables-container'>
+              <h1 className='barchart-heading'>
+                Stream wise aptitude and interest score
+              </h1>
               <div className='table-container'>
-                <h1 className='barchart-heading'>
-                  Stream wise aptitude and interest score
-                </h1>
                 <table border='2px'>
                   <thead>
                     <tr>
@@ -253,10 +253,10 @@ function StudentBarChart() {
                 </table>
               </div>
               {/*All Streams Scores of Student in Stream Recommendation Test  */}
+              <h1 className='barchart-heading'>
+                Student interest according to stream
+              </h1>
               <div className='table-container'>
-                <h1 className='barchart-heading'>
-                  Student interest according to stream
-                </h1>
                 <table border='2px'>
                   <thead>
                     <tr>
@@ -289,10 +289,10 @@ function StudentBarChart() {
                 </table>
               </div>
             </div>
+            <h1 className='barchart-heading'>
+              All streams Total Score Bar Chart
+            </h1>
             <div className='barchart-table-container'>
-              <h1 className='barchart-heading'>
-                All streams Total Score Bar Chart
-              </h1>
               {/* bar chart of all streams total scores of stream recommendation test */}
               <div className='barchart'>
                 <BarChart

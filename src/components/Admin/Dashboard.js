@@ -200,7 +200,7 @@ function Dashboard(props) {
       {/* dashboard container where all metrics were displayed */}
       <div className='dashboard-container'>
         <h1 className='dashboard-heading'>
-          Stream Recommendation Test metrics
+          Stream Recommendation Test Metrics
         </h1>
         <br />
         {/* date filter */}
