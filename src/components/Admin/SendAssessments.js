@@ -160,30 +160,32 @@ function SendAssessments(props) {
         </h1>
         <div className='assessments-container'>
           <div>
-            <input
-              type='radio'
-              value='file'
-              id='file'
-              name='send'
-              onChange={handleMailSentTypeChange}
-              className='radio'
-            />
-            <label htmlFor='file' className='label'>
-              Import from File
-            </label>
-            <br />
-            <input
-              type='radio'
-              value='manual'
-              id='manual'
-              name='send'
-              onChange={handleMailSentTypeChange}
-              className='radio'
-            />
-            <label htmlFor='manual' className='label'>
-              Enter Email Ids
-            </label>
-            <br />
+            <div>
+              <input
+                type='radio'
+                value='file'
+                id='file'
+                name='send'
+                onChange={handleMailSentTypeChange}
+                className='radio'
+              />
+              <label htmlFor='file' className='label'>
+                Import Emails from File
+              </label>
+              <br />
+              <input
+                type='radio'
+                value='manual'
+                id='manual'
+                name='send'
+                onChange={handleMailSentTypeChange}
+                className='radio'
+              />
+              <label htmlFor='manual' className='label'>
+                Enter Email Ids
+              </label>
+              <br />
+            </div>
             {mailSentType !== "" && (
               <>
                 {mailSentType === "file" ? (
@@ -205,7 +207,14 @@ function SendAssessments(props) {
                       rows='6'
                       cols='30'
                       onChange={(e) => setAllMails(e.target.value)}
-                      className='textarea'
+                      className='textarea d-lg-none'
+                      placeholder='Only enter comma or space separated email ids'
+                    ></textarea>
+                    <textarea
+                      rows='6'
+                      cols='50'
+                      onChange={(e) => setAllMails(e.target.value)}
+                      className='textarea d-none d-lg-block'
                       placeholder='Only enter comma or space separated email ids'
                     ></textarea>
                   </>
