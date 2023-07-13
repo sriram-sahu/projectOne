@@ -161,7 +161,6 @@ function TestReport(props) {
           }}
           style={{
             padding: "4px",
-            width: "60px",
             height: "30px",
             fontSize: "10px",
             backgroundColor: "#004461",
@@ -186,7 +185,6 @@ function TestReport(props) {
           onClick={() => navigate("/studentBarChart", { state: params.row })}
           style={{
             padding: "4px",
-            width: "60px",
             height: "30px",
             fontSize: "10px",
             backgroundColor: "#ED2B2A",
