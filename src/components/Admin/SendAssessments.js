@@ -109,7 +109,7 @@ function SendAssessments(props) {
   const handleSendEmail = () => {
     const subject = "Hello you are invited to write this test!"; // email subject
     const body =
-      "Hello user, you're invited to write the test. %0D%0A Link: http://localhost:3000/studentLogin %0D%0A %0D%0A %0D%0A"; // email  body
+      "Hello user, you're invited to write the test. %0D%0A Test Link: https://study-global.netlify.app/adminLogin %0D%0A %0D%0A %0D%0A"; // email  body
     // send mail when file format is txt, docx, xls, xlsx
     if (
       fileExtension === "txt" ||

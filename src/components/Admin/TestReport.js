@@ -319,7 +319,7 @@ function TestReport(props) {
             Start Date:{"   "}
             <input
               type='date'
-              value={startDate}
+              // value={startDate}
               className='test-report-date-input'
               onChange={(e) => setStartDate(new Date(e.target.value))}
               max={new Date().toISOString().split("T")[0]}
@@ -330,7 +330,7 @@ function TestReport(props) {
             End Date:{" "}
             <input
               type='date'
-              value={endDate}
+              // value={endDate}
               className='test-report-date-input'
               onChange={(e) => setEndDate(new Date(e.target.value))}
               max={new Date().toISOString().split("T")[0]}
