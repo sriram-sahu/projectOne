@@ -206,7 +206,7 @@ function SendAssessments(props) {
                       cols='30'
                       onChange={(e) => setAllMails(e.target.value)}
                       className='textarea'
-                      placeholder="Only enter comma or space separated email id's"
+                      placeholder='Only enter comma or space separated email ids'
                     ></textarea>
                   </>
                 )}

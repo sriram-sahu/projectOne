@@ -148,7 +148,7 @@ function TestReport(props) {
     },
     {
       field: "View Score",
-      headerName: "View Score",
+      headerName: "View Report",
       cellClassName: "table-cell",
       width: 100,
       headerClassName: "table-header",
@@ -172,13 +172,13 @@ function TestReport(props) {
             border: "none",
           }}
         >
-          View Score
+          View Report
         </button>
       ),
     },
     {
       field: "View data",
-      headerName: "View Data",
+      headerName: "View Details",
       width: 100,
       sortable: false,
       renderCell: (params) => (
@@ -197,7 +197,7 @@ function TestReport(props) {
             border: "none",
           }}
         >
-          View Data
+          View Details
         </button>
       ),
     },
