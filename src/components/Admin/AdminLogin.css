@@ -8,6 +8,10 @@
     flex-direction: column;
     min-height: 100vh;
   }
+  .test-heading{
+    color: #FFFFFF;
+    font-size: 8px;
+}
   .admin-header-container{
     padding-left:30px;
     background-color:#004461;
@@ -24,9 +28,10 @@
   
   .admin-header-logo-container{
     height:100%; 
-      display:flex; 
-      justify-content:center ;
-      align-items:center;
+    display:flex; 
+    flex-direction: column;
+    justify-content:center ;
+    align-items:center;
   }
   
   .admin-desktop-header-navbar-container{

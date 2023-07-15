@@ -190,53 +190,53 @@ const AdminLogin = () => {
       let science_math_interests_score = 0;
       // using map method for keys of object in stream Data to calculate scores
       Object.keys(item).map((score, i) => {
-        if (i > 9 && i < 90) {
+        if (i > 2 && i < 90) {
           // if index is in range of 10-90 then the below if condition executes
-          if (i - 9 in humanities_aptitude_responses) {
+          if (i - 2 in humanities_aptitude_responses) {
             // if index exists in humanities_aptitude_responses object then the below if condition executes
-            if (item[score] === humanities_aptitude_responses[i - 9]) {
+            if (item[score] === humanities_aptitude_responses[i - 2]) {
               // if the value that is stored in item equals to key that is in humanities_aptitude_responses object then the below if condition executes and caculates humanities_aptitude_score
               humanities_aptitude_score += 1;
             }
-          } else if (i - 9 in commerce_aptitude_reponses) {
+          } else if (i - 2 in commerce_aptitude_reponses) {
             // if index exists in commerce_aptitude_reponses object then the below if condition executes
-            if (item[score] === commerce_aptitude_reponses[i - 9]) {
+            if (item[score] === commerce_aptitude_reponses[i - 2]) {
               // if the value that is stored in item equals to key that is in commerce_aptitude_reponses object then the below if condition executes and caculates commerce_aptitude_score
               commerce_aptitude_score += 1;
             }
-          } else if (i - 9 in science_bio_aptitude_responses) {
+          } else if (i - 2 in science_bio_aptitude_responses) {
             // if index exists in science_bio_aptitude_responses object then the below if condition executes
-            if (item[score] === science_bio_aptitude_responses[i - 9]) {
+            if (item[score] === science_bio_aptitude_responses[i - 2]) {
               // if the value that is stored in item equals to key that is in science_bio_aptitude_responses object then the below if condition executes and caculates science_bio_aptitude_score
               science_bio_aptitude_score += 1;
             }
-          } else if (i - 9 in science_math_aptitude_responses) {
+          } else if (i - 2 in science_math_aptitude_responses) {
             // if index exists in science_math_aptitude_responses object then the below if condition executes
-            if (item[score] === science_math_aptitude_responses[i - 9]) {
+            if (item[score] === science_math_aptitude_responses[i - 2]) {
               // if the value that is stored in item equals to key that is in science_math_aptitude_responses object then the below if condition executes and caculates science_math_aptitude_score
               science_math_aptitude_score += 1;
             }
-          } else if (i - 9 in humanities_interests_responses) {
+          } else if (i - 2 in humanities_interests_responses) {
             // if index exists in humanities_interests_responses object then the below if condition executes
-            if (item[score] === humanities_interests_responses[i - 9]) {
+            if (item[score] === humanities_interests_responses[i - 2]) {
               // if the value that is stored in item equals to key that is in humanities_interests_responses object then the below if condition executes and caculates humanities_interests_score
               humanities_interests_score += 1;
             }
-          } else if (i - 9 in commerce_interests_responses) {
+          } else if (i - 2 in commerce_interests_responses) {
             // if index exists in commerce_interests_responses object then the below if condition executes
-            if (item[score] === commerce_interests_responses[i - 9]) {
+            if (item[score] === commerce_interests_responses[i - 2]) {
               // if the value that is stored in item equals to key that is in commerce_interests_responses object then the below if condition executes and caculates commerce_interests_score
               commerce_interests_score += 1;
             }
-          } else if (i - 9 in science_bio_interests_responses) {
+          } else if (i - 2 in science_bio_interests_responses) {
             // if index exists in science_bio_interests_responses object then the below if condition executes
-            if (item[score] === science_bio_interests_responses[i - 9]) {
+            if (item[score] === science_bio_interests_responses[i - 2]) {
               // if the value that is stored in item equals to key that is in science_bio_interests_responses object then the below if condition executes and caculates science_bio_interests_score
               science_bio_interests_score += 1;
             }
-          } else if (i - 9 in science_math_interests_responses) {
+          } else if (i - 2 in science_math_interests_responses) {
             // if index exists in science_math_interests_responses object then the below if condition executes
-            if (item[score] === science_math_interests_responses[i - 9]) {
+            if (item[score] === science_math_interests_responses[i - 2]) {
               // if the value that is stored in item equals to key that is in science_math_interests_responses object then the below if condition executes and caculates science_math_interests_score
               science_math_interests_score += 1;
             }
@@ -329,17 +329,12 @@ const AdminLogin = () => {
             <div className='admin-header-logo-container'>
               {/* logo and after clicking this logo, it'll navigates to home route*/}
               <img
-                src='https://res.cloudinary.com/de5cu0mab/image/upload/v1688971136/Logo_Final_uovjgi.png'
-                alt='logo'
-                style={{
-                  height: "50px",
-                  width: "100px",
-                  borderRadius: "10px",
-                  border: "none",
-                  backgroundColor: "white",
-                }}
-                onClick={() => navigate("/")}
-              />
+              src='https://res.cloudinary.com/de5cu0mab/image/upload/v1688971136/Logo_Final_uovjgi.png'
+              alt='logo'
+              className="logo"
+              onClick={() => navigate("/")}
+            />
+            <h6 className="test-heading">Stream Recommendation Test</h6>
             </div>
             <div className='admin-desktop-header-navbar-container'>
               {/* when clicking this Dashboard text, it'll navigates to dashboard route */}

@@ -27,25 +27,21 @@ const TestInstructions = () => {
   return (
     <div className='test-instructions'>
       <div>
-        <h2 className="heading">Online Test Instructions</h2>
         <div className='instruction-container'>
-          <h1 className="instruction-heading">Instructions</h1>
+          <h2 className="heading">Online Test Instructions</h2>
+          {/* <h1 className="instruction-heading">Instructions</h1> */}
           <ul className='instructions'>
             <li>Ensure you have a stable internet connection throughout the test.</li>
             <li>Use a desktop or laptop computer for the best experience. Mobile
             devices are not recommended.</li>
             <li>Close any unnecessary applications or tabs on your computer.</li>
             <li>Answer each question to the best of your ability.</li>
-            <li>If you encounter any technical issues during the test, notify your
-            instructor immediately.</li>
             <li>Once you have completed the test, carefully review your answers
             before submitting.</li>
             <li>Click on the "Submit" button only when you are ready to finalize
             your test.</li>
             <li>After submission, you may not be able to make any changes or
             revisit the test.</li>
-            <li>If you have any questions or encounter any issues, reach
-            out to your instructor immediately.</li>
           </ul>
           <h1 className="good-luck">Good luck! </h1>
         </div>

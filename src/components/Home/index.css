@@ -20,13 +20,17 @@
 .headerLogoContainer{
     height:100%; 
     display:flex; 
+    flex-direction: column;
     justify-content:center ;
     align-items:center;
 }
 .logo{
     height:50px;
     width:100px; 
-    border-radius:10px;
+}
+.test-heading{
+    color: #FFFFFF;
+    font-size: 8px;
 }
 
 .desktopHeaderNavbarContainer{
@@ -95,5 +99,21 @@
         color:white;
         margin-bottom: 20px;
         list-style: none;
+    }
+}
+.text-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #010000;
+    background-color: #aed9f5;
+    height: 100vh;
+    font-size: 40px;
+}
+@media screen and (max-width:400px){
+    .text-container{
+        font-size: 20px;
     }
 }

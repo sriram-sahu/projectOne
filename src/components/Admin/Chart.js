@@ -109,15 +109,10 @@ function Chart() {
             <img
               src='https://res.cloudinary.com/de5cu0mab/image/upload/v1688971136/Logo_Final_uovjgi.png'
               alt='logo'
-              style={{
-                height: "50px",
-                width: "100px",
-                borderRadius: "10px",
-                border: "none",
-                backgroundColor: "white",
-              }}
+              className="logo"
               onClick={() => navigate("/")}
             />
+            <h6 className="test-heading">Stream Recommendation Test</h6>
           </div>
           <div className='admin-desktop-header-navbar-container'>
             {/* when clicking this Home text, it'll navigates to home route*/}
