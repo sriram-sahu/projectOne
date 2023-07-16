@@ -19,6 +19,8 @@ function TestReport(props) {
     }))
   );
 
+  console.log(data, "data");
+
   // navigate variable used to naviagating to different routes
   const navigate = useNavigate();
   // usestate of search to store search data
@@ -236,7 +238,7 @@ function TestReport(props) {
 
   // filteredData variable used to store all filtered tests data reponses by email id search
   const filteredData = filterData.filter((i) =>
-    i.Email_Address.toLowerCase().includes(search.toLowerCase())
+    i.Email_Address?.toLowerCase().includes(search.toLowerCase())
   );
 
   // handleUpdate function to update all streams scores to google sheet of stream recommendation Test google sheet using sheet db google api
@@ -245,13 +247,13 @@ function TestReport(props) {
       // if Total_Score column is not present in google sheet, the below code will execute
       // fetching an sheet db api to access the required data in google sheet
       fetch(
-        `https://sheetdb.io/api/v1/bhymdl2yiryk4/Email_Address/${item.Email_Address}`,
+        `https://sheetdb.io/api/v1/8bznvdqw13pug/Email_Address/${item.Email_Address}`,
         {
           method: "PATCH",
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            Authorization: "Bearer q031lh4xf0lyhtpa9mk47wiyqyaitt6xowfd8zp3",
+            Authorization: "Bearer x110c3h0nc8k5cr50vr5m3gz3bhc43ccvze0s4t5",
           },
           // in body we need to add all the required data to update it in google sheet
           body: JSON.stringify({
