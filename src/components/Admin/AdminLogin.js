@@ -190,53 +190,53 @@ const AdminLogin = () => {
       let science_math_interests_score = 0;
       // using map method for keys of object in stream Data to calculate scores
       Object.keys(item).map((score, i) => {
-        if (i > 2 && i < 90) {
+        if (i > 9 && i < 90) {
           // if index is in range of 10-90 then the below if condition executes
-          if (i - 2 in humanities_aptitude_responses) {
+          if (i - 9 in humanities_aptitude_responses) {
             // if index exists in humanities_aptitude_responses object then the below if condition executes
-            if (item[score] === humanities_aptitude_responses[i - 2]) {
+            if (item[score] === humanities_aptitude_responses[i - 9]) {
               // if the value that is stored in item equals to key that is in humanities_aptitude_responses object then the below if condition executes and caculates humanities_aptitude_score
               humanities_aptitude_score += 1;
             }
-          } else if (i - 2 in commerce_aptitude_reponses) {
+          } else if (i - 9 in commerce_aptitude_reponses) {
             // if index exists in commerce_aptitude_reponses object then the below if condition executes
-            if (item[score] === commerce_aptitude_reponses[i - 2]) {
+            if (item[score] === commerce_aptitude_reponses[i - 9]) {
               // if the value that is stored in item equals to key that is in commerce_aptitude_reponses object then the below if condition executes and caculates commerce_aptitude_score
               commerce_aptitude_score += 1;
             }
-          } else if (i - 2 in science_bio_aptitude_responses) {
+          } else if (i - 9 in science_bio_aptitude_responses) {
             // if index exists in science_bio_aptitude_responses object then the below if condition executes
-            if (item[score] === science_bio_aptitude_responses[i - 2]) {
+            if (item[score] === science_bio_aptitude_responses[i - 9]) {
               // if the value that is stored in item equals to key that is in science_bio_aptitude_responses object then the below if condition executes and caculates science_bio_aptitude_score
               science_bio_aptitude_score += 1;
             }
-          } else if (i - 2 in science_math_aptitude_responses) {
+          } else if (i - 9 in science_math_aptitude_responses) {
             // if index exists in science_math_aptitude_responses object then the below if condition executes
-            if (item[score] === science_math_aptitude_responses[i - 2]) {
+            if (item[score] === science_math_aptitude_responses[i - 9]) {
               // if the value that is stored in item equals to key that is in science_math_aptitude_responses object then the below if condition executes and caculates science_math_aptitude_score
               science_math_aptitude_score += 1;
             }
-          } else if (i - 2 in humanities_interests_responses) {
+          } else if (i - 9 in humanities_interests_responses) {
             // if index exists in humanities_interests_responses object then the below if condition executes
-            if (item[score] === humanities_interests_responses[i - 2]) {
+            if (item[score] === humanities_interests_responses[i - 9]) {
               // if the value that is stored in item equals to key that is in humanities_interests_responses object then the below if condition executes and caculates humanities_interests_score
               humanities_interests_score += 1;
             }
-          } else if (i - 2 in commerce_interests_responses) {
+          } else if (i - 9 in commerce_interests_responses) {
             // if index exists in commerce_interests_responses object then the below if condition executes
-            if (item[score] === commerce_interests_responses[i - 2]) {
+            if (item[score] === commerce_interests_responses[i - 9]) {
               // if the value that is stored in item equals to key that is in commerce_interests_responses object then the below if condition executes and caculates commerce_interests_score
               commerce_interests_score += 1;
             }
-          } else if (i - 2 in science_bio_interests_responses) {
+          } else if (i - 9 in science_bio_interests_responses) {
             // if index exists in science_bio_interests_responses object then the below if condition executes
-            if (item[score] === science_bio_interests_responses[i - 2]) {
+            if (item[score] === science_bio_interests_responses[i - 9]) {
               // if the value that is stored in item equals to key that is in science_bio_interests_responses object then the below if condition executes and caculates science_bio_interests_score
               science_bio_interests_score += 1;
             }
-          } else if (i - 2 in science_math_interests_responses) {
+          } else if (i - 9 in science_math_interests_responses) {
             // if index exists in science_math_interests_responses object then the below if condition executes
-            if (item[score] === science_math_interests_responses[i - 2]) {
+            if (item[score] === science_math_interests_responses[i - 9]) {
               // if the value that is stored in item equals to key that is in science_math_interests_responses object then the below if condition executes and caculates science_math_interests_score
               science_math_interests_score += 1;
             }
@@ -321,53 +321,53 @@ const AdminLogin = () => {
 
   return (
     <div>
-      <div className='admin-container'>
+      <div className="admin-container">
         {isSignedIn ? (
           // if admin has signedIn, the below code will render
-          <div className='admin-header-container'>
+          <div className="admin-header-container">
             {/* header for desktop  with Logo and components Dashboard, Assessments, Test Reports, Student Reports and Sign Out */}
-            <div className='admin-header-logo-container'>
+            <div className="admin-header-logo-container">
               {/* logo and after clicking this logo, it'll navigates to home route*/}
               <img
-              src='https://res.cloudinary.com/de5cu0mab/image/upload/v1688971136/Logo_Final_uovjgi.png'
-              alt='logo'
-              className="logo"
-              onClick={() => navigate("/")}
-            />
-            <h6 className="test-heading">Stream Recommendation Test</h6>
+                src="https://res.cloudinary.com/de5cu0mab/image/upload/v1688971136/Logo_Final_uovjgi.png"
+                alt="logo"
+                className="logo"
+                onClick={() => navigate("/")}
+              />
+              <h6 className="test-heading">Stream Recommendation Test</h6>
             </div>
-            <div className='admin-desktop-header-navbar-container'>
+            <div className="admin-desktop-header-navbar-container">
               {/* when clicking this Dashboard text, it'll navigates to dashboard route */}
               <p
                 onClick={() => handleDashboard()}
-                className='admin-desktop-header-navbar-link'
+                className="admin-desktop-header-navbar-link"
               >
                 Dashboard
               </p>
               {/* when clicking this Assessments text, it'll navigates to send assessments route */}
               <p
                 onClick={() => handleAssessment()}
-                className='admin-desktop-header-navbar-link'
+                className="admin-desktop-header-navbar-link"
               >
                 Assessments
               </p>
               {/* when clicking this Test Report text, it'll navigates to test report route */}
               <p
                 onClick={() => handleTestReports()}
-                className='admin-desktop-header-navbar-link'
+                className="admin-desktop-header-navbar-link"
               >
                 Test Report
               </p>
               {/* when clicking this Sign Out text, it'll navigates to admin login route and agains admin needs to sign in to access all routes */}
               <p
-                className='admin-desktop-header-navbar-link'
+                className="admin-desktop-header-navbar-link"
                 onClick={handleSignOut}
               >
                 Sign Out
               </p>
             </div>
             {/* nav header for mobile  with Logo and components Dashboard, Assessments, Test Report and Sign Out */}
-            <div className='admin-mobile-header-navbar-container'>
+            <div className="admin-mobile-header-navbar-container">
               <Popup
                 contentStyle={{
                   width: "70%",
@@ -379,38 +379,38 @@ const AdminLogin = () => {
                   alignItems: "center",
                 }}
                 trigger={
-                  <button className='admin-hamburger-btn'>
+                  <button className="admin-hamburger-btn">
                     <GiHamburgerMenu />
                   </button>
                 }
-                position='bottom right'
+                position="bottom right"
               >
-                <ul className='admin-mobile-hamburger-menu'>
+                <ul className="admin-mobile-hamburger-menu">
                   {/* when clicking this Dashboard text, it'll navigates to dashboard route */}
                   <li
                     onClick={() => handleDashboard()}
-                    className='admin-header-navbar-link'
+                    className="admin-header-navbar-link"
                   >
                     Dashboard
                   </li>
                   {/* when clicking this Assessments text, it'll navigates to send assessments route */}
                   <li
                     onClick={() => handleAssessment()}
-                    className='admin-header-navbar-link'
+                    className="admin-header-navbar-link"
                   >
                     Assessments
                   </li>
                   {/* when clicking this Test Report text, it'll navigates to test report route */}
                   <li
                     onClick={() => handleTestReports()}
-                    className='admin-header-navbar-link'
+                    className="admin-header-navbar-link"
                   >
                     Test Report
                   </li>
                   {/* when clicking this Sign Out text, it'll navigates to admin login route and agains admin needs to sign in to access all routes */}
                   <li
                     onClick={handleSignOut}
-                    className='admin-header-navbar-link'
+                    className="admin-header-navbar-link"
                   >
                     Sign Out
                   </li>
@@ -420,13 +420,13 @@ const AdminLogin = () => {
           </div>
         ) : (
           // if admin hasn't signedIn, the below code will render
-          <div className='display-column'>
+          <div className="display-column">
             <h2>Login With Google</h2>
             {/* if admin clicks this button, he can sign in into his account and get access for all routes */}
-            <button onClick={handleSignIn} className='google-signin-button'>
+            <button onClick={handleSignIn} className="google-signin-button">
               <img
-                src='https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg'
-                alt='Google Logo'
+                src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+                alt="Google Logo"
               />
               Sign In with Google
             </button>
