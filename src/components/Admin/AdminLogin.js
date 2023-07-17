@@ -269,8 +269,13 @@ const AdminLogin = () => {
       item.science_math_score =
         science_math_aptitude_score + science_math_interests_score;
       item.total_score = total_score;
+      item.percentage =
+        ((total_score / process.env.REACT_APP_TOTAL_QUESTIONS) * 100).toFixed(
+          2
+        ) + "%";
     });
   };
+  console.log(typeof process.env.REACT_APP_TOTAL_QUESTIONS, "env");
 
   // after component rendering, fetchStreamTabulationData function logic will execute
   useEffect(() => {

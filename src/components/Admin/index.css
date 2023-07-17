@@ -271,10 +271,12 @@ th {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 30px;
-  margin-left: 20px;
-  margin-bottom: 30px;
+  margin-top: 10px;
+  margin-left: 30px;
+  margin-bottom: 10px;
+  display: flex;
 }
+
 @media screen and (max-width: 920px) {
   .charts {
     display: flex;
@@ -531,6 +533,7 @@ th {
   align-items: center;
   margin-bottom: 10px;
   margin-left: 20px;
+  flex-wrap: wrap;
 }
 .barchart-table-container {
   display: flex;

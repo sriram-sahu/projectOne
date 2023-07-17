@@ -114,6 +114,13 @@ function TestReport(props) {
       cellClassName: "table-cell",
     },
     {
+      field: "percentage",
+      headerName: "percentage",
+      width: 100,
+      headerClassName: "table-header",
+      cellClassName: "table-cell",
+    },
+    {
       field: "humanities_score",
       headerName: "Humanities Score",
       width: 100,
@@ -406,6 +413,10 @@ function TestReport(props) {
                   <div className="table-data">
                     <p>Total Score</p>
                     <p className="td">{item.Score}</p>
+                  </div>
+                  <div className="table-data">
+                    <p>percentage</p>
+                    <p className="td">{item.percentage}</p>
                   </div>
                   <div className="table-data">
                     <p>Humanities Score</p>

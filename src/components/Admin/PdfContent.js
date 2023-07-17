@@ -58,8 +58,6 @@ const PdfContent = ({ streamsContent, data }) => {
       </p>
       <br />
 
-      <h3 className="text-center">DYNAMIC CONTENT FROM YOUR END</h3>
-
       <br />
       <br />
       <div>

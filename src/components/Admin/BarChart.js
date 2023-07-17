@@ -97,7 +97,7 @@ function StudentBarChart() {
   // generatePdf function used to generate the pdf which includes student details along with all streams aptitude and interest scores piechart when clicking on the download button in the component
   const generatePdf = useReactToPrint({
     content: () => detailsPdf.current,
-    documentTitle: data.Email_Address.slice(0, data.Email_Address.indexOf("@")),
+    documentTitle: data.Full_Name,
     //onAfterPrint: () => alert("pdf downloaded"),
   });
   // handle Submit function used to sent email to students regarding candidate details and scores through email
@@ -333,40 +333,44 @@ function StudentBarChart() {
           </div>
         </div>
         <div className="barchart-buttons-container">
-          {/* By clicking Download button, pdf with student data can be dowloaded */}
-          <button
-            type="button"
-            style={{ backgroundColor: "#004461" }}
-            className="send-btn"
-            onClick={generatePdf}
-          >
-            Download Score
-          </button>
-          {/* By clicking the Send Email button, the boolean value of isOpen will be changed */}
-          <button
-            style={{ backgroundColor: "darkgrey" }}
-            onClick={() => sendMail(data)}
-            className="send-btn"
-          >
-            Send Email
-          </button>
-          {/* By clicking the view score button, studentChart route will be navigated */}
-          <button
-            style={{ backgroundColor: "#ED2B2A" }}
-            onClick={() => navigate("/studentChart", { state: data })}
-            className="send-btn"
-          >
-            View Report
-          </button>
-          <button
-            className="send-btn"
-            style={{
-              backgroundColor: "#004461",
-            }}
-            onClick={() => onClickSendManually(data)}
-          >
-            Send Manually
-          </button>
+          <div className="m-3">
+            {/* By clicking Download button, pdf with student data can be dowloaded */}
+            <button
+              type="button"
+              style={{ backgroundColor: "#004461" }}
+              className="send-btn"
+              onClick={generatePdf}
+            >
+              Download Score
+            </button>
+            {/* By clicking the Send Email button, the boolean value of isOpen will be changed */}
+            <button
+              style={{ backgroundColor: "darkgrey" }}
+              onClick={() => sendMail(data)}
+              className="send-btn"
+            >
+              Send Email
+            </button>
+          </div>
+          <div className="m-3">
+            {/* By clicking the view score button, studentChart route will be navigated */}
+            <button
+              style={{ backgroundColor: "#ED2B2A" }}
+              onClick={() => navigate("/studentChart", { state: data })}
+              className="send-btn"
+            >
+              View Report
+            </button>
+            <button
+              className="send-btn"
+              style={{
+                backgroundColor: "#004461",
+              }}
+              onClick={() => onClickSendManually(data)}
+            >
+              Send Manually
+            </button>
+          </div>
         </div>
         {/* react-bootstrap modal for including cc */}
         <Modal show={isOpen} onRequestClose={handleClose}>

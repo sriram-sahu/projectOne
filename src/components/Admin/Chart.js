@@ -101,37 +101,37 @@ function Chart() {
   return (
     // chart container with student, piechart, download and send email button
     <div>
-      <div className='chart-container'>
+      <div className="chart-container">
         {/* header for desktop  with Logo and components Dashboard, Assessments, Test Reports, Student Reports and Admin */}
-        <div className='admin-header-container'>
-          <div className='admin-header-logo-container'>
+        <div className="admin-header-container">
+          <div className="admin-header-logo-container">
             {/* logo */}
             <img
-              src='https://res.cloudinary.com/de5cu0mab/image/upload/v1688971136/Logo_Final_uovjgi.png'
-              alt='logo'
+              src="https://res.cloudinary.com/de5cu0mab/image/upload/v1688971136/Logo_Final_uovjgi.png"
+              alt="logo"
               className="logo"
               onClick={() => navigate("/")}
             />
             <h6 className="test-heading">Stream Recommendation Test</h6>
           </div>
-          <div className='admin-desktop-header-navbar-container'>
+          <div className="admin-desktop-header-navbar-container">
             {/* when clicking this Home text, it'll navigates to home route*/}
             <p
-              className='admin-desktop-header-navbar-link'
+              className="admin-desktop-header-navbar-link"
               onClick={() => navigate("/")}
             >
               Home
             </p>
             {/* when clicking this Admin text, it'll navigates to admin login route and again admin can access all routes */}
             <p
-              className='admin-desktop-header-navbar-link'
+              className="admin-desktop-header-navbar-link"
               onClick={() => navigate("/adminLogin")}
             >
               Admin
             </p>
           </div>
           {/* nav header for mobile  with Logo and components Dashboard, Assessments, Test Reports, Student Reports and Admin */}
-          <div className='admin-mobile-header-navbar-container'>
+          <div className="admin-mobile-header-navbar-container">
             <Popup
               contentStyle={{
                 width: "70%",
@@ -143,24 +143,24 @@ function Chart() {
                 alignItems: "center",
               }}
               trigger={
-                <button className='admin-hamburger-btn'>
+                <button className="admin-hamburger-btn">
                   <GiHamburgerMenu />
                 </button>
               }
-              position='bottom right'
+              position="bottom right"
             >
-              <ul className='admin-mobile-hamburger-menu'>
+              <ul className="admin-mobile-hamburger-menu">
                 {/* when clicking this Home text, it'll navigates to home route*/}
                 <li
                   onClick={() => navigate("/")}
-                  className='admin-header-navbar-link'
+                  className="admin-header-navbar-link"
                 >
                   Home
                 </li>
                 {/* when clicking this Admin text, it'll navigates to admin login route and again admin can access all routes */}
                 <li
                   onClick={() => navigate("/adminLogin")}
-                  className='admin-header-navbar-link'
+                  className="admin-header-navbar-link"
                 >
                   Admin
                 </li>
@@ -169,8 +169,8 @@ function Chart() {
           </div>
         </div>
         {/* student details and piechart */}
-        <div ref={detailsPdf} className='charts'>
-          <div className='details'>
+        <div ref={detailsPdf} className="charts">
+          <div className="details">
             <h1 style={{ fontSize: "30px", fontWeight: "bold" }}>
               Student Details:
             </h1>
@@ -200,13 +200,13 @@ function Chart() {
             <PieChart width={280} height={280}>
               <Pie
                 data={pieData}
-                color='#000000'
-                dataKey='value'
-                nameKey='name'
-                cx='50%'
-                cy='50%'
+                color="#000000"
+                dataKey="value"
+                nameKey="name"
+                cx="50%"
+                cy="50%"
                 outerRadius={100}
-                fill='#8884d8'
+                fill="#8884d8"
               >
                 {pieData.map((entry, index) => (
                   <Cell
@@ -221,60 +221,67 @@ function Chart() {
           </div>
         </div>
         {/* download, send email and view Data buttons  */}
-        <div className='button-container'>
+        <div className="button-container">
           {/* download button to download the score card */}
-          <button
-            type='button'
-            style={{
-              backgroundColor: "#004461",
-            }}
-            className='send'
-            onClick={generatePdf}
-          >
-            Download Score
-          </button>
-          {/* send email button to send the score card through email*/}
-          <button
-            style={{
-              backgroundColor: "darkgrey",
-            }}
-            onClick={() => sendMail(data)}
-            className='send'
-          >
-            Send Email
-          </button>
+          <div className="">
+            <button
+              type="button"
+              style={{
+                backgroundColor: "#004461",
+                margin: "10px",
+              }}
+              className="send"
+              onClick={generatePdf}
+            >
+              Download Score
+            </button>
+            {/* send email button to send the score card through email*/}
+            <button
+              style={{
+                backgroundColor: "darkgrey",
+                margin: "10px",
+              }}
+              onClick={() => sendMail(data)}
+              className="send"
+            >
+              Send Email
+            </button>
+          </div>
           {/* clicking view Data button to navigate to studentBarChart route*/}
-          <button
-            style={{ backgroundColor: "#ED2B2A" }}
-            onClick={() => navigate("/studentBarChart", { state: data })}
-            className='send'
-          >
-            View Details
-          </button>
-          <button
-            style={{
-              backgroundColor: "#004461",
-            }}
-            className='send'
-            onClick={() => onClickSendManually(data)}
-          >
-            Send Manually
-          </button>
+          <div className="">
+            <button
+              style={{ backgroundColor: "#ED2B2A", margin: "10px" }}
+              onClick={() => navigate("/studentBarChart", { state: data })}
+              className="send"
+            >
+              View Details
+            </button>
+            <button
+              style={{
+                backgroundColor: "#004461",
+                margin: "10px",
+              }}
+              className="send"
+              onClick={() => onClickSendManually(data)}
+            >
+              Send Manually
+            </button>
+          </div>
         </div>
         {/* react-bootstrap modal for including cc */}
-        <Modal show={isOpen} onRequestClose={handleClose} className='modal'>
+        <Modal show={isOpen} onRequestClose={handleClose} className="modal">
           <Modal.Header closeButton onClick={handleClose}>
             <Modal.Title>Email Details</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form.Group>
               <Form.Label>Student Mail ID: </Form.Label>
-              <Form.Control type='text' value={data.Email_Address} />
+              <Form.Control type="text" value={data.Email_Address} />
             </Form.Group>
             <Form.Group>
               <Form.Label>CC Mail ID's: </Form.Label>
               <Form.Control
-                type='text'
+                type="text"
                 value={mailId}
                 onChange={(e) => setMailId(e.target.value)}
               />
@@ -288,8 +295,8 @@ function Chart() {
                 color: "white",
                 padding: "3px",
               }}
-              variant='primary'
-              type='submit'
+              variant="primary"
+              type="submit"
               onClick={() => {
                 handleSubmit(mailId);
                 setIsOpen(!isOpen);
