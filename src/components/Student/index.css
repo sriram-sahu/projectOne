@@ -1,11 +1,15 @@
 /* Test component css */
 .details-container {
-  height:100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  width:100%;
-  color:'#010000';
+  width: 100%;
+  color: "#010000";
+}
+iframe {
+  min-height: 100vh;
+  width: 100%;
 }
 /* TestInstructions component css */
 .test-instructions {
@@ -13,123 +17,123 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding:30px;
+  padding: 30px;
   text-align: center;
-  min-height:100vh;
-  color:'#010000';
+  min-height: 100vh;
+  color: "#010000";
 }
-.heading{
+.heading {
   font-size: 35px;
-  color:'#010000';
+  color: "#010000";
   text-align: center;
   text-decoration: underline;
 }
 .instruction-container {
   margin: auto;
   text-align: left;
-  min-height:400px;
-  width:800px;
+  min-height: 400px;
+  width: 800px;
   background-color: antiquewhite;
   border-radius: 10px;
   overflow-y: scroll;
   padding: 20px;
   margin-bottom: 10px;
-  color:'#010000';
+  color: "#010000";
 }
-.instruction-heading{
-  font-Size:30px;
+.instruction-heading {
+  font-size: 30px;
   text-align: center;
-  color:'#010000';
+  color: "#010000";
   text-decoration: underline;
 }
-.good-luck{
-  font-Size:30px;
-  color:'#010000';
+.good-luck {
+  font-size: 30px;
+  color: "#010000";
 }
 .instructions {
   font-size: 18px;
 }
-.label{
+.label {
   font-size: 20px;
-  color:'#010000';
+  color: "#010000";
 }
-@media screen and (min-height:800px){
-  .test-instructions{
-    height:700px;
-  }
-}
-@media screen and (max-width:910px){
-  .instruction-container{
-      width:600px;
+@media screen and (min-height: 800px) {
+  .test-instructions {
+    height: 700px;
   }
 }
-@media screen and (max-width:570px){
-  .instruction-container{
-      width:400px;
-  }
-  .heading{
-      font-size: 25px;
+@media screen and (max-width: 910px) {
+  .instruction-container {
+    width: 600px;
   }
 }
-@media screen and (max-width:450px){
-  .instruction-container{
-      width:330px;
+@media screen and (max-width: 570px) {
+  .instruction-container {
+    width: 400px;
   }
-  .heading{
-      font-size: 20px;
-      margin-right: 40px;
-      margin-left:30px;
+  .heading {
+    font-size: 25px;
   }
-  .instruction-heading{
+}
+@media screen and (max-width: 450px) {
+  .instruction-container {
+    width: 330px;
+  }
+  .heading {
+    font-size: 20px;
+    margin-right: 40px;
+    margin-left: 30px;
+  }
+  .instruction-heading {
     font-size: 28px;
   }
-  .good-luck{
+  .good-luck {
     font-size: 28px;
   }
-  .instructions{
+  .instructions {
     font-size: 18px;
   }
 }
-@media screen and (max-width:395px){
-  .heading{
+@media screen and (max-width: 395px) {
+  .heading {
     font-size: 20px;
   }
 }
-@media screen and (max-width:300px){
-  .instruction-container{
-      width:250px;
+@media screen and (max-width: 300px) {
+  .instruction-container {
+    width: 250px;
   }
-  .heading{
-      font-size: 16px;
-  }
-  .instruction-heading{
-    font-size: 20px;
-  }
-  .good-luck{
-    font-size: 20px;
-  }
-  .instructions{
+  .heading {
     font-size: 16px;
   }
-  .label{
+  .instruction-heading {
+    font-size: 20px;
+  }
+  .good-luck {
+    font-size: 20px;
+  }
+  .instructions {
+    font-size: 16px;
+  }
+  .label {
     font-size: 15px;
   }
 }
-.start-button{
+.start-button {
   margin-left: 10px;
   background-color: #004461;
   border: none;
   border-radius: 5px;
   padding: 5px;
-  color:#FFFFFF;
+  color: #ffffff;
   font-size: 15px;
 }
-.not-start-button{
+.not-start-button {
   margin-left: 10px;
   background-color: grey;
   border: none;
   border-radius: 5px;
   padding: 5px;
-  color:#FFFFFF;
+  color: #ffffff;
   font-size: 15px;
 }
