@@ -58,7 +58,7 @@ function Chart() {
   const generatePdf = useReactToPrint({
     content: () => detailsPdf.current,
     documentTitle: data.Email_Address.slice(0, data.Email_Address.indexOf("@")),
-    onAfterPrint: () => alert("pdf downloaded"),
+    //onAfterPrint: () => alert("pdf downloaded"),
   });
   // handle Submit function used to sent email to students regarding candidate details and scores through email
   const handleSubmit = (item) => {

@@ -475,7 +475,7 @@ const PdfContent = ({ streamsContent, data }) => {
         </div>
         <br />
 
-        <p style={{ marginTop: "550px" }}>
+        <p style={{ marginTop: "500px" }}>
           @2023 Study Global OverSeas Education Consultants. All right reserved.
         </p>
       </div>
