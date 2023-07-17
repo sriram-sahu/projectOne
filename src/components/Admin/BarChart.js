@@ -325,19 +325,17 @@ function StudentBarChart() {
               </div>
             </div>
           </div>
-          <div>
-            <p className="copyright">
-              @{new Date().getFullYear()} Study Global OverSeas Education
-              Consultants. All right reserved.
-            </p>
-          </div>
         </div>
         <div className="barchart-buttons-container">
-          <div className="m-3">
+          <div className="">
             {/* By clicking Download button, pdf with student data can be dowloaded */}
             <button
               type="button"
-              style={{ backgroundColor: "#004461" }}
+              style={{
+                backgroundColor: "#004461",
+                width: "140px",
+                margin: "5px",
+              }}
               className="send-btn"
               onClick={generatePdf}
             >
@@ -345,17 +343,25 @@ function StudentBarChart() {
             </button>
             {/* By clicking the Send Email button, the boolean value of isOpen will be changed */}
             <button
-              style={{ backgroundColor: "darkgrey" }}
+              style={{
+                backgroundColor: "darkgrey",
+                width: "140px",
+                margin: "5px",
+              }}
               onClick={() => sendMail(data)}
               className="send-btn"
             >
               Send Email
             </button>
           </div>
-          <div className="m-3">
+          <div className="">
             {/* By clicking the view score button, studentChart route will be navigated */}
             <button
-              style={{ backgroundColor: "#ED2B2A" }}
+              style={{
+                backgroundColor: "#ED2B2A",
+                width: "140px",
+                margin: "5px",
+              }}
               onClick={() => navigate("/studentChart", { state: data })}
               className="send-btn"
             >
@@ -365,6 +371,8 @@ function StudentBarChart() {
               className="send-btn"
               style={{
                 backgroundColor: "#004461",
+                width: "140px",
+                margin: "5px",
               }}
               onClick={() => onClickSendManually(data)}
             >

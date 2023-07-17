@@ -439,7 +439,6 @@ th {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-right: 40px;
 }
 .rank-heading {
   text-align: center;
@@ -542,7 +541,7 @@ th {
   margin-left: 50px;
 }
 .barchart {
-  margin-left: 0px;
+  margin-left: -50px;
 }
 
 .table-container {
@@ -584,7 +583,6 @@ td {
 }
 @media screen and (max-width: 600px) {
   .table-container {
-    margin-right: -40px;
   }
 }
 @media screen and (max-width: 430px) {
@@ -599,7 +597,6 @@ td {
   }
   .table-container {
     width: 320px;
-    margin-right: -30px;
   }
   .chart-buttons-container {
     margin-left: 25px;
@@ -615,17 +612,20 @@ td {
   .table-container {
     width: 300px;
     margin-left: 10px;
-    margin-right: -30px;
   }
   .barchart {
     margin-left: -30px;
   }
 }
+
+@media screen and (max-width: 340px) {
+  .send-btn {
+    width: 70px;
+  }
+}
 @media screen and (max-width: 300px) {
   .table-container {
     width: 180px;
-    margin-left: 45px;
-    margin-right: 10px;
   }
   .barchart-table-container {
     width: 200px;
