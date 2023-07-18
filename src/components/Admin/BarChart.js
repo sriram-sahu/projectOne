@@ -269,14 +269,14 @@ function StudentBarChart() {
                       <tr key={index}>
                         <td>{item[0]}</td>
                         <td>
-                          {item[1] > 0 && item[1] < 2
+                          {item[1] >= 0 && item[1] < 2
                             ? "Low"
                             : item[1] > 1 && item[1] < 4
                             ? "Medium"
                             : "High"}
                         </td>
                         <td>
-                          {item[2] > 0 && item[2] < 6
+                          {item[2] >= 0 && item[2] < 6
                             ? "Low"
                             : item[2] > 5 && item[2] < 11
                             ? "Medium"

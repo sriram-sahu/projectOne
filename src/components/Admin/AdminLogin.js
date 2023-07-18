@@ -21,6 +21,7 @@ const AdminLogin = () => {
   const [isDashboard, setIsDashboard] = useState(false);
   const [isAssessment, setIsAssessment] = useState(false);
   const [isTestReports, setIsTestReports] = useState(false);
+  const [isPopUpOpen, setIsPopUpOpen] = useState(false);
   // streamData usestate to store data responses for all tests
   const [streamData, setStreamData] = useState([]);
   // usestate to store user email of client
@@ -304,24 +305,28 @@ const AdminLogin = () => {
     setIsDashboard(false);
     setIsAssessment(false);
     setIsTestReports(false);
+    setIsPopUpOpen(false);
   };
   // handleDashboard function to set useState of isDashboard to true and others to false
   const handleDashboard = () => {
     setIsDashboard(true);
     setIsAssessment(false);
     setIsTestReports(false);
+    setIsPopUpOpen(false);
   };
   // handleAssessment function to set useState of isAssessment to true and others to false
   const handleAssessment = () => {
     setIsDashboard(false);
     setIsAssessment(true);
     setIsTestReports(false);
+    setIsPopUpOpen(false);
   };
   // handleTestReports function to set useState of isTestReports to true and others to false
   const handleTestReports = () => {
     setIsDashboard(false);
     setIsAssessment(false);
     setIsTestReports(true);
+    setIsPopUpOpen(false);
   };
 
   return (
@@ -385,10 +390,12 @@ const AdminLogin = () => {
                 }}
                 trigger={
                   <button className="admin-hamburger-btn">
-                    <GiHamburgerMenu />
+                    <GiHamburgerMenu onClick={() => setIsPopUpOpen(true)} />
                   </button>
                 }
                 position="bottom right"
+                open={isPopUpOpen}
+                onClose={() => setIsPopUpOpen(false)}
               >
                 <ul className="admin-mobile-hamburger-menu">
                   {/* when clicking this Dashboard text, it'll navigates to dashboard route */}
