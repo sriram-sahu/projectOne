@@ -723,6 +723,32 @@ td {
   justify-content: center;
   align-items: center;
 }
+.drop-down {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.filter-school {
+  margin-top: 10px;
+  color: #010000;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  margin-right: 20px;
+}
+.select {
+  height: 40px;
+  width: 200px;
+  color: #010000;
+  font-size: 16px;
+  border: 1px solid #010000;
+}
+@media screen and (max-width: 500px) {
+  .drop-down {
+    flex-direction: column;
+  }
+}
 @media screen and (max-width: 580px) {
   .date-filter {
     flex-direction: column;
@@ -967,4 +993,8 @@ td {
     width: 80px;
     font-size: 10px;
   }
+}
+.pdf-header {
+  display: flex;
+  justify-content: space-between;
 }

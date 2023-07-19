@@ -28,6 +28,14 @@ function SendAssessments(props) {
   const [fileExtension, setFileExtension] = useState("");
   // fileInputRef is react hook to persist values after render
   const fileInputRef = useRef(null);
+  const [cursor, setCursor] = useState("default");
+
+  const changeCursor = () => {
+    setCursor((prevState) => {
+      return "default";
+    });
+  };
+
   // triggers when file was uploaded
   const handleFileChange = (event) => {
     const file = event.target.files[0]; // imported file
@@ -147,8 +155,8 @@ function SendAssessments(props) {
     }
   }, []);
   return (
-    <div>
-      <div className='cards-container'>
+    <div onClick={changeCursor} style={{ cursor: cursor }}>
+      <div className="cards-container">
         <h1
           style={{
             textAlign: "center",
@@ -158,30 +166,30 @@ function SendAssessments(props) {
         >
           Send Assessments
         </h1>
-        <div className='assessments-container'>
+        <div className="assessments-container">
           <div>
             <div>
               <input
-                type='radio'
-                value='file'
-                id='file'
-                name='send'
+                type="radio"
+                value="file"
+                id="file"
+                name="send"
                 onChange={handleMailSentTypeChange}
-                className='radio'
+                className="radio"
               />
-              <label htmlFor='file' className='label'>
+              <label htmlFor="file" className="label">
                 Import Emails from File
               </label>
               <br />
               <input
-                type='radio'
-                value='manual'
-                id='manual'
-                name='send'
+                type="radio"
+                value="manual"
+                id="manual"
+                name="send"
                 onChange={handleMailSentTypeChange}
-                className='radio'
+                className="radio"
               />
-              <label htmlFor='manual' className='label'>
+              <label htmlFor="manual" className="label">
                 Enter Email Ids
               </label>
               <br />
@@ -191,11 +199,11 @@ function SendAssessments(props) {
                 {mailSentType === "file" ? (
                   <>
                     <input
-                      type='file'
+                      type="file"
                       ref={fileInputRef}
                       onChange={handleFileChange}
-                      accept='xls,xlsx,txt,docx'
-                      className='file-upload-btn'
+                      accept="xls,xlsx,txt,docx"
+                      className="file-upload-btn"
                     />
                     <p styles={{ fontSize: "15px" }}>
                       Support types: xls, xlsx, txt, docx
@@ -204,24 +212,24 @@ function SendAssessments(props) {
                 ) : (
                   <>
                     <textarea
-                      rows='6'
-                      cols='30'
+                      rows="6"
+                      cols="30"
                       onChange={(e) => setAllMails(e.target.value)}
-                      className='textarea d-lg-none'
-                      placeholder='Only enter comma or space separated email ids'
+                      className="textarea d-lg-none"
+                      placeholder="Only enter comma or space separated email ids"
                     ></textarea>
                     <textarea
-                      rows='6'
-                      cols='50'
+                      rows="6"
+                      cols="50"
                       onChange={(e) => setAllMails(e.target.value)}
-                      className='textarea d-none d-lg-block'
-                      placeholder='Only enter comma or space separated email ids'
+                      className="textarea d-none d-lg-block"
+                      placeholder="Only enter comma or space separated email ids"
                     ></textarea>
                   </>
                 )}
                 <br />
-                <div className='button'>
-                  <button className='send-ass-button' onClick={handleSendEmail}>
+                <div className="button">
+                  <button className="send-ass-button" onClick={handleSendEmail}>
                     Send Email
                   </button>
                 </div>

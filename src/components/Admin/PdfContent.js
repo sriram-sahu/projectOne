@@ -34,9 +34,33 @@ const PdfContent = ({ streamsContent, data }) => {
   BarchartData.sort((a, b) => b.score - a.score);
 
   return (
-    <div className="p-5">
+    <div className="p-4">
+      <div className="pdf-header">
+        {/* logo and after clicking this logo, it'll navigates to home route*/}
+        <div className="">
+          <img
+            src="https://res.cloudinary.com/de5cu0mab/image/upload/v1688971136/Logo_Final_uovjgi.png"
+            alt="logo"
+            className="logo"
+            style={{ height: "90px", width: "140px", marginLeft: "23px" }}
+          />
+          <br />
+        </div>
+        <h1 style={{ alignSelf: "center" }}>
+          <b>Study Global</b>
+        </h1>
+        <div style={{ alignSelf: "center" }}>
+          <p>
+            <b>Mail : </b>
+            <br />
+            <b>Phone : </b>9999999999
+          </p>
+        </div>
+      </div>
+      <a href=" www.overseaseducation.net"> www.overseaseducation.net</a>
+      <hr style={{ height: "2px" }} />
       <div style={{ "page-break-after": "always" }}>
-        <h1 className="text-center pb-5">Stream Recommendation Report</h1>
+        <h1 className="text-center pb-5">Stream Recommendation Test Report</h1>
         <p className="">
           Selecting a suitable career is the first step for a successful life
           ahead. Career selection can be quiet a challenging task as one is
@@ -58,8 +82,6 @@ const PdfContent = ({ streamsContent, data }) => {
           present in the career fields thus enabling a student to prepare
           themselves with confidence and clarity.
         </p>
-        <br />
-        <br />
         <br />
 
         <div>
@@ -237,7 +259,7 @@ const PdfContent = ({ streamsContent, data }) => {
                 <td>Bachelor of Computer Application (BCA)-Math preferred</td>
               </tr>
               <tr>
-                <td>Company Secretary</td>
+                <td>Company Secretary(CS)</td>
                 <td>
                   B.SC (12 <sup>th</sup> with math) <br />
                   a. I.T <br />
@@ -261,7 +283,7 @@ const PdfContent = ({ streamsContent, data }) => {
                 <td>BSC-Physics</td>
                 <td>Dentist(BDS)</td>
                 <td>Pharmacy</td>
-                <td>ENGINEERING-Bio technology</td>
+                <td>ENGINEERING-Bio Technology</td>
               </tr>
               <tr>
                 <td>BSC-Chemistry</td>
@@ -278,17 +300,17 @@ const PdfContent = ({ streamsContent, data }) => {
               <tr>
                 <td>BSC-Life Science</td>
                 <td>Homeopathy(BHMS)</td>
-                <td>Lab technology</td>
+                <td>Lab Technology</td>
                 <td></td>
               </tr>
               <tr>
                 <td>BSC-Botany</td>
-                <td>Ayurvedic Medicine(BUMS)</td>
+                <td>Ayurvedic Medicine(BAMS)</td>
                 <td>Prosthetic & Orthotics technology</td>
               </tr>
               <tr>
                 <td>BSC-Zoology</td>
-                <td>Unani Medical (BUMS)</td>
+                <td>Unani Medicine (BUMS)</td>
                 <td>Occupational Therapy</td>
                 <td></td>
               </tr>
@@ -326,7 +348,7 @@ const PdfContent = ({ streamsContent, data }) => {
                 <td>ENGINEERING-Mechanical</td>
                 <td>NATIONAL DEFENCE ACADEMY(NDA)-Army</td>
               </tr>
-              <td>ENGINEERING-Chemistry</td>
+              <td>ENGINEERING-Chemical</td>
               <td>NATIONAL DEFENCE ACADEMY(NDA)-Navy</td>
               <tr>
                 <td>ENGINEERING-Aeronautical</td>

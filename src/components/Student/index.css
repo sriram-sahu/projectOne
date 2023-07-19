@@ -137,3 +137,10 @@ iframe {
   color: #ffffff;
   font-size: 15px;
 }
+.pdf-headerr {
+  display: flex;
+  justify-content: space-between;
+  background-color: #004461;
+  margin-bottom: 10px;
+  color: white;
+}

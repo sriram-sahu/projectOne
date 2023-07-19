@@ -30,6 +30,13 @@ const AdminLogin = () => {
   const [isSignedIn, setIsSignedIn] = useState(false);
   // navigate varaible used to navigating to different paths
   const navigate = useNavigate();
+  const [cursor, setCursor] = useState("default");
+
+  const changeCursor = () => {
+    setCursor((prevState) => {
+      return "default";
+    });
+  };
 
   useEffect(() => {
     //  after component rendering the below logic will execute
@@ -143,6 +150,12 @@ const AdminLogin = () => {
 
     loadGoogleAPI();
   }, []);
+
+  let schoolNames = [];
+  for (let i of streamData) {
+    schoolNames.push(i.School_Name);
+  }
+  schoolNames = [...new Set(schoolNames)];
 
   // fetchStreamTabulationData function used to calculate all streams scores of stream recommendation test and will be added to streamData responses
   const fetchStreamTabulationData = () => {
@@ -330,7 +343,7 @@ const AdminLogin = () => {
   };
 
   return (
-    <div>
+    <div onClick={changeCursor} style={{ cursor: cursor }}>
       <div className="admin-container">
         {isSignedIn ? (
           // if admin has signedIn, the below code will render
@@ -445,7 +458,9 @@ const AdminLogin = () => {
           </div>
         )}
         {/* if isDashboard is true then Dashboard component will render */}
-        {isDashboard && <Dashboard datat={streamData} />}
+        {isDashboard && (
+          <Dashboard datat={streamData} schoolNames={schoolNames} />
+        )}
         {/* if isAssessment is true then SendAssessments component will render */}
         {isAssessment && <SendAssessments datat={streamData} />}
         {/* if isTestReports is true then TestReport component will render */}

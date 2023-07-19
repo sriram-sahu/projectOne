@@ -41,6 +41,13 @@ function StudentBarChart() {
   const [isOpen, setIsOpen] = useState(false);
   // colors for Barchart
   const COLORS = ["#8884d8", "#82ca9d", "#AF19FF", "#FF8042", "#FFBB28"];
+  const [cursor, setCursor] = useState("default");
+
+  const changeCursor = () => {
+    setCursor((prevState) => {
+      return "default";
+    });
+  };
   // aptitude score of all streams
   const aptitude_score =
     data.humanities_aptitude_score +
@@ -137,7 +144,7 @@ function StudentBarChart() {
     window.location.href = `mailto:${data.Email_Address}?cc=${data.Parent_Email_Id}&subject=${subject}&body=${body}`;
   };
   return (
-    <div>
+    <div onClick={changeCursor} style={{ cursor: cursor }}>
       <div className="barchart-container">
         {/* header for desktop  with Logo and components Dashboard, Assessments, Test Reports, Student Reports and Admin */}
         <div className="admin-header-container">

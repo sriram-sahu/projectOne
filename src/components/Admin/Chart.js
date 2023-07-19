@@ -13,6 +13,7 @@ import Footer from "../Footer/Footer";
 import { useReactToPrint } from "react-to-print";
 import { useLocation, useNavigate } from "react-router-dom";
 import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
+
 import "./index.css";
 
 function Chart() {
@@ -28,6 +29,14 @@ function Chart() {
   const [mailId, setMailId] = useState(null);
   // isOpen usestate to store boolean values to open or close modal
   const [isOpen, setIsOpen] = useState(false);
+  const [cursor, setCursor] = useState("default");
+
+  const changeCursor = () => {
+    setCursor((prevState) => {
+      return "default";
+    });
+  };
+
   // colors for piechart
   const COLORS = ["#8884d8", "#82ca9d", "#FFBB28", "#FF8042", "#AF19FF"];
   // aptitude score of all streams
@@ -100,7 +109,7 @@ function Chart() {
 
   return (
     // chart container with student, piechart, download and send email button
-    <div>
+    <div onClick={changeCursor} style={{ cursor: cursor }}>
       <div className="chart-container">
         {/* header for desktop  with Logo and components Dashboard, Assessments, Test Reports, Student Reports and Admin */}
         <div className="admin-header-container">

@@ -29,6 +29,12 @@ function TestReport(props) {
   const [startDate, setStartDate] = useState("");
   // startDate usestate to store start date
   const [endDate, setEndDate] = useState("");
+  const [cursor, setCursor] = useState("default");
+  const changeCursor = () => {
+    setCursor((prevState) => {
+      return "default";
+    });
+  };
 
   // table data
   const columns = [
@@ -101,6 +107,22 @@ function TestReport(props) {
     {
       field: "Parent_Phone_Number",
       headerName: "Parent's Phone Number",
+      width: 120,
+      headerClassName: "table-header",
+      cellClassName: "table-cell",
+      sortable: false,
+    },
+    {
+      field: "School_Name",
+      headerName: "School Name",
+      width: 160,
+      headerClassName: "table-header",
+      cellClassName: "table-cell",
+      sortable: false,
+    },
+    {
+      field: "Board",
+      headerName: "Board",
       width: 120,
       headerClassName: "table-header",
       cellClassName: "table-cell",
@@ -301,7 +323,7 @@ function TestReport(props) {
   return (
     <>
       {/* table container with search, filter by date and table data */}
-      <div>
+      <div onClick={changeCursor} style={{ cursor: cursor }}>
         <h1 className="test-report-heading">
           Stream Recommendation Test Tabulation Data
         </h1>
