@@ -51,7 +51,7 @@ const PdfContent = ({ streamsContent, data }) => {
         </h1>
         <div style={{ alignSelf: "center" }}>
           <p>
-            <b>Mail : </b>
+            <b>Email : </b>
             <br />
             <b>Phone : </b>9999999999
           </p>
@@ -127,13 +127,13 @@ const PdfContent = ({ streamsContent, data }) => {
           {/* bar chart of all streams total scores of stream recommendation test */}
           <div className="barchart">
             <BarChart
-              width={300}
+              width={450}
               height={300}
               data={BarchartData}
               margin={{
                 top: 30,
                 right: 0,
-                left: 0,
+                left: 50,
                 bottom: 5,
               }}
             >
