@@ -116,7 +116,7 @@ function Chart() {
           <div className="admin-header-logo-container">
             {/* logo */}
             <img
-              src="https://res.cloudinary.com/de5cu0mab/image/upload/v1688971136/Logo_Final_uovjgi.png"
+              src="https://res.cloudinary.com/dhbmdoldt/image/upload/v1689847916/Logo_ForDark-BG_tfgmpi.png"
               alt="logo"
               className="logo"
               onClick={() => navigate("/")}
@@ -190,6 +190,7 @@ function Chart() {
             <p>Parent Email Id: {data.Parent_Email_Id}</p>
             <p>Parent Phone Number :{data.Parent_Phone_Number}</p>
             <p>Total Score : {data.Score}</p>
+            <p>Percentage : {data.percentage}</p>
             <p>
               Aptitude Score :{" "}
               {data.humanities_aptitude_score +
@@ -232,7 +233,7 @@ function Chart() {
         {/* download, send email and view Data buttons  */}
         <div className="button-container">
           {/* download button to download the score card */}
-          <div className="">
+          <div className="buttons-cont">
             <button
               type="button"
               style={{
@@ -257,7 +258,7 @@ function Chart() {
             </button>
           </div>
           {/* clicking view Data button to navigate to studentBarChart route*/}
-          <div className="">
+          <div className="buttons-cont">
             <button
               style={{ backgroundColor: "#ED2B2A", margin: "10px" }}
               onClick={() => navigate("/studentBarChart", { state: data })}

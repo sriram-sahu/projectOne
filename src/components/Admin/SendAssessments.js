@@ -129,7 +129,10 @@ function SendAssessments(props) {
       fileExtension === "docx"
     ) {
       // send mail using mailto for uploaded document
-      window.location.href = `mailto:overseaseducation1000@gmail.com?bcc=${allMails}&subject=${subject}&body=${body}`;
+      const fromAddress = "overseaseducation1000@gmail.com";
+      window.location.href =
+        `mailto:overseaseducation1000@gmail.com?bcc=${allMails}&subject=${subject}&body=${body}` +
+        `&from=${encodeURIComponent(fromAddress)}`;
       // takes all input mails given by admin and send mails
     } else if (mailSentType === "manual") {
       const modifiedEmailAddresses = allMails // removes extra spaces and and extra commas

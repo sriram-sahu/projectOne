@@ -378,7 +378,9 @@ function TestReport(props) {
             Filter
           </button>
         </div>
-
+        {endDate < startDate && endDate && (
+          <p className="error">End Date Should Be Greater Than Start Date</p>
+        )}
         {/* desktop table container with table of stream recommendation test data respones */}
         <div className="d-none d-lg-block">
           {filteredData.length > 0 ? (
@@ -409,51 +411,51 @@ function TestReport(props) {
                     <p className="td">{item.id}</p>
                   </div>
                   <div className="table-data">
-                    <p>Completed On</p>
+                    <p className="th">Completed On</p>
                     <p className="td">{item.Timestamp}</p>
                   </div>
                   <div className="table-data">
-                    <p>Full Name</p>
+                    <p className="th">Full Name</p>
                     <p className="td">{item.Full_Name}</p>
                   </div>
                   <div className="table-data">
-                    <p>Email Address</p>
+                    <p className="th">Email Address</p>
                     <p className="td">{item.Email_Address}</p>
                   </div>
                   <div className="table-data">
-                    <p>Phone Number</p>
+                    <p className="th">Phone Number</p>
                     <p className="td">{item.Phone_Number}</p>
                   </div>
                   <div className="table-data">
-                    <p>Parent's Email Id</p>
+                    <p className="th">Parent's Email Id</p>
                     <p className="td">{item.Parent_Email_Id}</p>
                   </div>
                   <div className="table-data">
-                    <p>Parent's Phone Number</p>
+                    <p className="th">Parent's Phone Number</p>
                     <p className="td">{item.Parent_Phone_Number}</p>
                   </div>
                   <div className="table-data">
-                    <p>Total Score</p>
+                    <p className="th">Total Score</p>
                     <p className="td">{item.Score}</p>
                   </div>
                   <div className="table-data">
-                    <p>percentage</p>
+                    <p className="th">percentage</p>
                     <p className="td">{item.percentage}</p>
                   </div>
                   <div className="table-data">
-                    <p>Humanities Score</p>
+                    <p className="th">Humanities Score</p>
                     <p className="td">{item.humanities_score}</p>
                   </div>
                   <div className="table-data">
-                    <p>Commerce Score</p>
+                    <p className="th">Commerce Score</p>
                     <p className="td">{item.commerce_score}</p>
                   </div>
                   <div className="table-data">
-                    <p>Science With Bio Score</p>
+                    <p className="th">Science With Bio Score</p>
                     <p className="td">{item.science_bio_score}</p>
                   </div>
                   <div className="table-data">
-                    <p>Science With Math Score</p>
+                    <p className="th">Science With Math Score</p>
                     <p className="td">{item.science_math_score}</p>
                   </div>
                   {/* clicking view Score button it'll navigates to studentChart route */}

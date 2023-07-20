@@ -57,7 +57,7 @@ function Dashboard(props) {
   let filterData1 = filterData.filter((item) => {
     return item.School_Name === selectedFilter;
   });
-  if (filterData1.length === 0) {
+  if (selectedFilter === "" || selectedFilter === "select school name") {
     filterData1 = filterData;
   } else {
     filterData1 = filterData1;

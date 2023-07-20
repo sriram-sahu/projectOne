@@ -33,24 +33,31 @@ const TestInstructions = () => {
   };
 
   return (
-    <>
-      <div
-        onClick={changeCursor}
-        style={{ cursor: cursor }}
-        className="pdf-headerr"
-      >
+    <div
+      onClick={changeCursor}
+      style={{ cursor: cursor }}
+      className="cont-test-inst"
+    >
+      <div className="pdf-headerr">
         {/* logo and after clicking this logo, it'll navigates to home route*/}
-        <div className="">
+        <div className="logo-container">
           <img
-            src="https://res.cloudinary.com/de5cu0mab/image/upload/v1688971136/Logo_Final_uovjgi.png"
+            src="https://res.cloudinary.com/dhbmdoldt/image/upload/v1689847916/Logo_ForDark-BG_tfgmpi.png"
             alt="logo"
-            className="logo"
+            className="logo1"
           />
-          <br />
+          <a
+            href="http://www.overseaseducation.net"
+            target="_blank"
+            className="anchor"
+          >
+            www.overseaseducation.net
+          </a>
         </div>
-        <h1 className="self-align">Study Global</h1>
+        <h2 className="global-heading">Study Global</h2>
         <div className="self-align">
           <p>
+            <br />
             <b>Email : jivanishahina@gmail.com</b>
             <br />
             <b>Phone : </b>9999999999
@@ -109,7 +116,7 @@ const TestInstructions = () => {
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 

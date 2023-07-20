@@ -1,5 +1,6 @@
 /* Test component css */
 .details-container {
+  margin-top: 20px;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -77,7 +78,7 @@ iframe {
 }
 @media screen and (max-width: 450px) {
   .instruction-container {
-    width: 330px;
+    width: 300px;
   }
   .heading {
     font-size: 20px;
@@ -101,7 +102,7 @@ iframe {
 }
 @media screen and (max-width: 300px) {
   .instruction-container {
-    width: 250px;
+    width: 220px;
   }
   .heading {
     font-size: 16px;
@@ -118,6 +119,12 @@ iframe {
   .label {
     font-size: 15px;
   }
+}
+.cont-test-inst {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 .start-button {
   margin-left: 10px;
@@ -137,45 +144,78 @@ iframe {
   color: #ffffff;
   font-size: 15px;
 }
+.test-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .pdf-headerr {
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: #004461;
-  margin-bottom: 10px;
   color: white;
+  height: 60px;
 }
-
-.logo {
-  height: 80px;
-  width: 140px;
-  margin-left: 23px;
+.logo-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.anchor {
+  font-size: 10px;
+  text-decoration: none;
+  color: #ffffff;
+}
+.logo1 {
+  height: 50px;
+  width: 100px;
+  margin-bottom: -10px;
+}
+.global-heading {
+  margin-left: 50px;
 }
 .self-align {
   align-self: center;
-  margin: 8px;
 }
-@media screen and (max-width: 480px) {
-  .logo {
+@media screen and (max-width: 540px) {
+  .pdf-headerr {
+    padding-left: 0px;
+    padding-right: 5px;
+  }
+  .logo1 {
     height: 60px;
     width: 100px;
   }
+  .global-heading {
+    margin-left: 5px;
+  }
   .self-align {
-    margin: 6px;
   }
   .pdf-headerr p {
-    font-size: 10px;
+    font-size: 8px;
   }
-  .pdf-headerr h1 {
+  .pdf-headerr h2 {
     font-size: 16px;
+  }
+  .anchor {
+    font-size: 8px;
   }
 }
 
 @media screen and (max-width: 300px) {
-  .logo {
+  .logo1 {
     height: 40px;
     width: 80px;
   }
-  .pdf-headerr h1 {
+  .pdf-headerr h2 {
     font-size: 13px;
   }
 }

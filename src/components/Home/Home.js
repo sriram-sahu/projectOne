@@ -26,7 +26,7 @@ function Home() {
           <div className="headerLogoContainer">
             {/* logo and after clicking this logo, it'll navigates to home route*/}
             <img
-              src="https://res.cloudinary.com/de5cu0mab/image/upload/v1688971136/Logo_Final_uovjgi.png"
+              src="https://res.cloudinary.com/dhbmdoldt/image/upload/v1689847916/Logo_ForDark-BG_tfgmpi.png"
               alt="logo"
               className="logo"
             />

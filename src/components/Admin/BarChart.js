@@ -151,7 +151,7 @@ function StudentBarChart() {
           <div className="admin-header-logo-container">
             {/* logo */}
             <img
-              src="https://res.cloudinary.com/de5cu0mab/image/upload/v1688971136/Logo_Final_uovjgi.png"
+              src="https://res.cloudinary.com/dhbmdoldt/image/upload/v1689847916/Logo_ForDark-BG_tfgmpi.png"
               alt="logo"
               className="logo"
               onClick={() => navigate("/")}
@@ -334,7 +334,7 @@ function StudentBarChart() {
           </div>
         </div>
         <div className="barchart-buttons-container">
-          <div className="">
+          <div className="buttons-cont">
             {/* By clicking Download button, pdf with student data can be dowloaded */}
             <button
               type="button"
@@ -361,7 +361,7 @@ function StudentBarChart() {
               Send Email
             </button>
           </div>
-          <div className="">
+          <div className="buttons-cont">
             {/* By clicking the view score button, studentChart route will be navigated */}
             <button
               style={{

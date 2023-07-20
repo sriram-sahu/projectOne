@@ -16,6 +16,8 @@ import "./AdminLogin.css";
 // scopes variable is a google api to get access of google spreadsheets
 const SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
 
+const activeClassName = "activeTab";
+
 const AdminLogin = () => {
   // usestates of isDashboard, isAssessment, isTestReports to store boolen value
   const [isDashboard, setIsDashboard] = useState(false);
@@ -352,32 +354,46 @@ const AdminLogin = () => {
             <div className="admin-header-logo-container">
               {/* logo and after clicking this logo, it'll navigates to home route*/}
               <img
-                src="https://res.cloudinary.com/de5cu0mab/image/upload/v1688971136/Logo_Final_uovjgi.png"
+                src="https://res.cloudinary.com/dhbmdoldt/image/upload/v1689847916/Logo_ForDark-BG_tfgmpi.png"
                 alt="logo"
                 className="logo"
                 onClick={() => navigate("/")}
               />
-              <h6 className="test-heading">Stream Recommendation Test</h6>
+              <h6 style={{ alignSelf: "center" }} className="test-heading">
+                Stream Recommendation Test
+              </h6>
             </div>
             <div className="admin-desktop-header-navbar-container">
               {/* when clicking this Dashboard text, it'll navigates to dashboard route */}
               <p
                 onClick={() => handleDashboard()}
-                className="admin-desktop-header-navbar-link"
+                className={
+                  isDashboard
+                    ? `${activeClassName} admin-desktop-header-navbar-link`
+                    : "admin-desktop-header-navbar-link"
+                }
               >
                 Dashboard
               </p>
               {/* when clicking this Assessments text, it'll navigates to send assessments route */}
               <p
                 onClick={() => handleAssessment()}
-                className="admin-desktop-header-navbar-link"
+                className={
+                  isAssessment
+                    ? `${activeClassName} admin-desktop-header-navbar-link`
+                    : "admin-desktop-header-navbar-link"
+                }
               >
                 Assessments
               </p>
               {/* when clicking this Test Report text, it'll navigates to test report route */}
               <p
                 onClick={() => handleTestReports()}
-                className="admin-desktop-header-navbar-link"
+                className={
+                  isTestReports
+                    ? `${activeClassName} admin-desktop-header-navbar-link`
+                    : "admin-desktop-header-navbar-link"
+                }
               >
                 Test Report
               </p>
