@@ -144,3 +144,38 @@ iframe {
   margin-bottom: 10px;
   color: white;
 }
+
+.logo {
+  height: 80px;
+  width: 140px;
+  margin-left: 23px;
+}
+.self-align {
+  align-self: center;
+  margin: 8px;
+}
+@media screen and (max-width: 480px) {
+  .logo {
+    height: 60px;
+    width: 100px;
+  }
+  .self-align {
+    margin: 6px;
+  }
+  .pdf-headerr p {
+    font-size: 10px;
+  }
+  .pdf-headerr h1 {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .logo {
+    height: 40px;
+    width: 80px;
+  }
+  .pdf-headerr h1 {
+    font-size: 13px;
+  }
+}

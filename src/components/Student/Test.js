@@ -20,14 +20,13 @@ const Text = () => {
             src="https://res.cloudinary.com/de5cu0mab/image/upload/v1688971136/Logo_Final_uovjgi.png"
             alt="logo"
             className="logo"
-            style={{ height: "90px", width: "140px", marginLeft: "23px" }}
           />
           <br />
         </div>
-        <h1 style={{ alignSelf: "center" }}>Study Global</h1>
-        <div style={{ alignSelf: "center" }}>
+        <h1 className="self-align">Study Global</h1>
+        <div className="self-align">
           <p>
-            <b>email : </b>
+            <b>Email : jivanishahina@gmail.com</b>
             <br />
             <b>Phone : </b>9999999999
           </p>
