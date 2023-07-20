@@ -57,9 +57,10 @@ const PdfContent = ({ streamsContent, data }) => {
           </p>
         </div>
       </div>
-      <a target="blank" href="https://www.overseaseducation.net">
+      <a target="_blank" href="https://www.overseaseducation.net">
         www.overseaseducation.net
       </a>
+
       <hr style={{ height: "2px" }} />
       <div style={{ "page-break-after": "always" }}>
         <h1 className="text-center pb-5">Stream Recommendation Test Report</h1>
@@ -177,7 +178,6 @@ const PdfContent = ({ streamsContent, data }) => {
           that is unaffected by interest. Though innate, it can still be
           developed by education and training.
         </p>
-
         <p>
           Interest on the other hand, is a feeling because of which we tend to
           give more attention to a particular subject or thing. This can change
@@ -216,11 +216,25 @@ const PdfContent = ({ streamsContent, data }) => {
         <br />
         <br />
         <br />
-        <p>
+
+        <p
+          style={{
+            fontFamily: "Your Italic Font, sans-serif",
+            fontStyle: "italic",
+          }}
+        >
           <b>Remember:</b> “You can always edit a bad page. You can’t edit a
           blank page&quot;
         </p>
-        <p className="text-end">- Jodi Picoult</p>
+        <p
+          style={{
+            fontFamily: "Your Italic Font, sans-serif",
+            fontStyle: "italic",
+          }}
+          className="text-end"
+        >
+          - Jodi Picoult
+        </p>
         <p>
           The recommendation provided in the report should be taken as a guide
           to help you decide on your selection of stream. It should be seen as a

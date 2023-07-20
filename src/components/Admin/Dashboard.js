@@ -269,6 +269,9 @@ function Dashboard(props) {
             Filter
           </button>
         </div>
+        {endDate < startDate && endDate && (
+          <p className="error">End Date Should Be Greater Than Start Date</p>
+        )}
         <div className="drop-down">
           <h1 className="filter-school">Filter By School Name:</h1>
           <select
