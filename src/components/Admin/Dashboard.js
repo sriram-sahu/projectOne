@@ -10,9 +10,10 @@ import "./index.css";
 
 function Dashboard(props) {
   // location varaiable to get location of the dashboard route and state
-  const { datat } = props;
+  const [cursor, setCursor] = useState('default');
+  const { datat,schoolNames } = props;
+  const [selectedFilter, setSelectedFilter] = useState('')
   const location = useLocation();
-  const [selectedFilter, setSelectedFilter] = useState("");
   // navigate variable used to naviagating to different routes
   const navigate = useNavigate();
   // useState of data to store the stream recommendation test data responses
@@ -23,14 +24,6 @@ function Dashboard(props) {
   const [startDate, setStartDate] = useState("");
   // endDate usestate to store the end date
   const [endDate, setEndDate] = useState("");
-  const [cursor, setCursor] = useState("default");
-
-  const changeCursor = () => {
-    setCursor((prevState) => {
-      return "default";
-    });
-  };
-
   // handleFilter function used to filter the all tests data responses using start date and end date
   const handleFilter = () => {
     const filtered = data.filter((item) => {
@@ -47,6 +40,24 @@ function Dashboard(props) {
     // set filter data array to setFilterData function
     setFilterData(filtered);
   };
+  let school_Names=['select school name'].concat(schoolNames)
+
+  const handleFilterChange = (event) => {
+    const selectedSchoolName = event.target.value
+    setSelectedFilter(selectedSchoolName)
+
+    // Filter the data based on the selected School Name
+    
+  };
+  let filterData1 = filterData.filter((item) => {
+    return item.School_Name === selectedFilter
+  });
+ if (selectedFilter==='select school name' || selectedFilter===''){
+  filterData1=filterData
+ }else{
+  filterData1=filterData1
+ }
+
 
   // initializing all streams aptitude, interest, total scores and percentages to zero
   let humanities_total_score = 0,
@@ -205,37 +216,38 @@ function Dashboard(props) {
     }
   }, []);
   const changeCursor = () => {
-    setCursor((prevState) => {
-      return "default";
+    setCursor(prevState => {
+      return 'default';
     });
-  };
+  }
   return (
-    <div className="main-container">
+    <div className='main-container' onClick={changeCursor}
+    style={{ cursor: cursor }}>
       {/* dashboard container where all metrics were displayed */}
-      <div className="dashboard-container">
-        <h1 className="dashboard-heading">
+      <div className='dashboard-container'>
+        <h1 className='dashboard-heading'>
           Stream Recommendation Test Metrics
         </h1>
         <br />
         {/* date filter */}
-        <div className="date-filter">
-          <div className="display-between">
+        <div className='date-filter'>
+          <div className='display-between'>
             Start Date:{"   "}
             <input
-              type="date"
+              type='date'
               value={startDate}
-              className="date-input"
+              className='date-input'
               style={{ marginLeft: "10px" }}
               max={new Date().toISOString().split("T")[0]}
               onChange={(e) => setStartDate(e.target.value)}
             />
           </div>
-          <div className="display-between">
+          <div className='display-between'>
             End Date:{" "}
             <input
-              type="date"
+              type='date'
               value={endDate}
-              className="date-input"
+              className='date-input'
               style={{ marginLeft: "10px" }}
               max={new Date().toISOString().split("T")[0]}
               onChange={(e) => setEndDate(e.target.value)}
@@ -255,29 +267,39 @@ function Dashboard(props) {
             Filter
           </button>
         </div>
+        {endDate < startDate && endDate && <p className="error">End Date Should Be Greater Than Start Date</p>}
+        {/* School Name Drop Down Filter */}
+        <div className="drop-down">
+          <h1 className="filter-school">Filter By School Name:</h1>
+          <select className="select" value={selectedFilter} onChange={handleFilterChange}>
+            {school_Names.map((schoolName,index)=>
+              <option className='option' value={schoolName} key={index}>{schoolName}</option>
+            )}
+          </select>
+        </div>
         {/* if filterData length if greater than zero then below code will execute */}
-        {filterData.length ? (
-          <h2 className="allmetricsHeading">
+        {filterData1.length ? (
+          <h2 className='allmetricsHeading'>
             Below Metrics are about percentage of each stream which are
             correctly answered by students
           </h2>
         ) : null}
         <div style={{ textAlign: "center" }}>
-          <button className="totaltestconductedbutton">
-            Total Tests Conducted: {filterData.length}
+          <button className='totaltestconductedbutton'>
+            Total Tests Conducted: {filterData1.length}
           </button>
         </div>
         <br />
         {/* all streams pie charts */}
-        <div className="test-chart">
+        <div className='test-chart'>
           {/* all streams total scores percentages pie chart */}
-          {filterData.length ? (
-            <div className="piechart-container">
+          {filterData1.length ? (
+            <div className='piechart-container'>
               <Chart
                 width={250}
                 height={250}
-                className="allstreamsPiechart"
-                chartType="PieChart"
+                className='allstreamsPiechart'
+                chartType='PieChart'
                 data={pieData}
                 options={{
                   colors: ["#0e3ab3", "#f05232", "#e89510", "#2b8a3c"],
@@ -289,43 +311,43 @@ function Dashboard(props) {
                   legend: "none",
                 }}
               ></Chart>
-              <div className="legend-container">
-                <div className="test-legend">
-                  <button className="color"></button>
-                  <span className="test">Humanities</span>
+              <div className='legend-container'>
+                <div className='test-legend'>
+                  <button className='color'></button>
+                  <span className='test'>Humanities</span>
                 </div>
-                <div className="test-legend">
+                <div className='test-legend'>
                   <button
                     style={{ backgroundColor: "#f05232" }}
-                    className="color"
+                    className='color'
                   ></button>
-                  <span className="test">Commerce</span>
+                  <span className='test'>Commerce</span>
                 </div>
-                <div className="test-legend">
+                <div className='test-legend'>
                   <button
                     style={{ backgroundColor: "#e89510" }}
-                    className="color"
+                    className='color'
                   ></button>
-                  <span className="test">Science (Bio)</span>
+                  <span className='test'>Science (Bio)</span>
                 </div>
-                <div className="test-legend">
+                <div className='test-legend'>
                   <button
-                    className="color"
+                    className='color'
                     style={{ backgroundColor: "#2b8a3c" }}
                   ></button>
-                  <span className="test">Science (Math)</span>
+                  <span className='test'>Science (Math)</span>
                 </div>
               </div>
             </div>
           ) : null}
           {/* all streams aptitude total scores percentages pie chart */}
-          {filterData.length ? (
-            <div className="piechart-container">
+          {filterData1.length ? (
+            <div className='piechart-container'>
               <Chart
                 width={250}
                 height={250}
-                className="allstreamsPiechart"
-                chartType="PieChart"
+                className='allstreamsPiechart'
+                chartType='PieChart'
                 data={pieData1}
                 options={{
                   colors: ["#963596", "#5c9ed1", "#e62e81", "#62b027"],
@@ -337,46 +359,46 @@ function Dashboard(props) {
                   legend: "none",
                 }}
               ></Chart>
-              <div className="legend-container">
-                <div className="test-legend">
+              <div className='legend-container'>
+                <div className='test-legend'>
                   <button
-                    className="color"
+                    className='color'
                     style={{ backgroundColor: "#963596" }}
                   ></button>
-                  <span className="test">Humanities Aptitude</span>
+                  <span className='test'>Humanities Aptitude</span>
                 </div>
-                <div className="test-legend">
+                <div className='test-legend'>
                   <button
-                    className="color"
+                    className='color'
                     style={{ backgroundColor: "#5c9ed1" }}
                   ></button>
-                  <span className="test">Commerce Aptitude</span>
+                  <span className='test'>Commerce Aptitude</span>
                 </div>
-                <div className="test-legend">
+                <div className='test-legend'>
                   <button
-                    className="color"
+                    className='color'
                     style={{ backgroundColor: "#e62e81" }}
                   ></button>
-                  <span className="test">Science (Bio) Aptitude</span>
+                  <span className='test'>Science (Bio) Aptitude</span>
                 </div>
-                <div className="test-legend">
+                <div className='test-legend'>
                   <button
-                    className="color"
+                    className='color'
                     style={{ backgroundColor: "#62b027" }}
                   ></button>
-                  <span className="test">Science (Math) Aptitude</span>
+                  <span className='test'>Science (Math) Aptitude</span>
                 </div>
               </div>
             </div>
           ) : null}
           {/* all streams interest total scores percentages pie chart */}
-          {filterData.length ? (
-            <div className="piechart-container">
+          {filterData1.length ? (
+            <div className='piechart-container'>
               <Chart
                 width={250}
                 height={250}
-                className="allstreamsPiechart"
-                chartType="PieChart"
+                className='allstreamsPiechart'
+                chartType='PieChart'
                 data={pieData2}
                 options={{
                   colors: ["#b02709", "#102061", "#630fa8", "#88e615"],
@@ -388,34 +410,34 @@ function Dashboard(props) {
                   legend: "none",
                 }}
               ></Chart>
-              <div className="legend-container">
-                <div className="test-legend">
+              <div className='legend-container'>
+                <div className='test-legend'>
                   <button
-                    className="color"
+                    className='color'
                     style={{ backgroundColor: "#b02709" }}
                   ></button>
-                  <span className="test">Humanities Interest</span>
+                  <span className='test'>Humanities Interest</span>
                 </div>
-                <div className="test-legend">
+                <div className='test-legend'>
                   <button
-                    className="color"
+                    className='color'
                     style={{ backgroundColor: "#102061" }}
                   ></button>
-                  <span className="test">Commerce Interest</span>
+                  <span className='test'>Commerce Interest</span>
                 </div>
-                <div className="test-legend">
+                <div className='test-legend'>
                   <button
-                    className="color"
+                    className='color'
                     style={{ backgroundColor: "#630fa8" }}
                   ></button>
-                  <span className="test">Science (Bio) Interest</span>
+                  <span className='test'>Science (Bio) Interest</span>
                 </div>
-                <div className="test-legend">
+                <div className='test-legend'>
                   <button
-                    className="color"
+                    className='color'
                     style={{ backgroundColor: "#88e615" }}
                   ></button>
-                  <span className="test">Science (Math) Interest</span>
+                  <span className='test'>Science (Math) Interest</span>
                 </div>
               </div>
             </div>

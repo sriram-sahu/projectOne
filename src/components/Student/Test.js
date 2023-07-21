@@ -3,7 +3,13 @@ import React, { useState } from "react";
 import Footer from "../Footer/Footer";
 import "./index.css";
 
-const Text = () => {
+const Test = () => {
+  const [cursor, setCursor] = useState("default");
+  const changeCursor = () => {
+    setCursor((prevState) => {
+      return "default";
+    });
+  };
   return (
     <div
       className="test-container"
@@ -43,6 +49,9 @@ const Text = () => {
         >
           Loading…
         </iframe>
+      </div>
+      <div style={{width:'100%'}}>
+      <Footer />
       </div>
     </div>
   );

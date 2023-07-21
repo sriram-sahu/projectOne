@@ -34,7 +34,34 @@ const PdfContent = ({ streamsContent, data }) => {
   BarchartData.sort((a, b) => b.score - a.score);
 
   return (
-    <div className="p-5">
+    <div className="p-4">
+      <div className="pdf-header">
+        {/* logo and after clicking this logo, it'll navigates to home route*/}
+        <div className="">
+          <img
+            src="https://res.cloudinary.com/de5cu0mab/image/upload/v1688971136/Logo_Final_uovjgi.png"
+            alt="logo"
+            className="logo"
+            style={{ height: "90px", width: "140px", marginLeft: "23px" }}
+          />
+          <br />
+        </div>
+        <h1 style={{ alignSelf: "center" }}>
+          <b>Study Global</b>
+        </h1>
+        <div style={{ alignSelf: "center" }}>
+          <p>
+            <b>Email : </b>jivanishahina@gmail.com
+            <br />
+            <b>Phone : </b>9999999999
+          </p>
+        </div>
+      </div>
+      <a target="_blank" href="https://www.overseaseducation.net">
+        www.overseaseducation.net
+      </a>
+
+      <hr style={{ height: "2px" }} />
       <div style={{ "page-break-after": "always" }}>
         <h1 className="text-center pb-5">Stream Recommendation Test Report</h1>
         <p className="">
@@ -132,6 +159,10 @@ const PdfContent = ({ streamsContent, data }) => {
             </BarChart>
           </div>
         </div>
+        <br />
+        <p>
+          @{new Date().getFullYear()} Study Global OverSeas Education Consultants. All right reserved.
+        </p>
       </div>
       <div style={{ "page-break-after": "always" }}>
         <br />
@@ -208,6 +239,18 @@ const PdfContent = ({ streamsContent, data }) => {
           The recommendation provided in the report should be taken as a guide
           to help you decide on your selection of stream. It should be seen as a
           stepping stone and not final and binding.
+        </p>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <p>
+          @{new Date().getFullYear()} Study Global OverSeas Education Consultants. All right reserved.
         </p>
       </div>
       {/* <br />
@@ -318,6 +361,13 @@ const PdfContent = ({ streamsContent, data }) => {
             </tbody>
           </table>
         </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <p>
+          @{new Date().getFullYear()} Study Global OverSeas Education Consultants. All right reserved.
+        </p>
       </div>
 
       <br />
@@ -434,6 +484,11 @@ const PdfContent = ({ streamsContent, data }) => {
             </tbody>
           </table>
         </div>
+        <br />
+        <br />
+        <p>
+          @{new Date().getFullYear()} Study Global OverSeas Education Consultants. All right reserved.
+        </p>
       </div>
       <br />
       <br />
@@ -487,8 +542,8 @@ const PdfContent = ({ streamsContent, data }) => {
         </div>
         <br />
 
-        <p style={{ marginTop: "500px" }}>
-          @2023 Study Global OverSeas Education Consultants. All right reserved.
+        <p style={{ marginTop: "595px" }}>
+          @{new Date().getFullYear()} Study Global OverSeas Education Consultants. All right reserved.
         </p>
       </div>
     </div>

@@ -13,7 +13,6 @@ import Footer from "../Footer/Footer";
 import { useReactToPrint } from "react-to-print";
 import { useLocation, useNavigate } from "react-router-dom";
 import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
-
 import "./index.css";
 
 function Chart() {
@@ -30,14 +29,6 @@ function Chart() {
   const [mailId, setMailId] = useState(null);
   // isOpen usestate to store boolean values to open or close modal
   const [isOpen, setIsOpen] = useState(false);
-  const [cursor, setCursor] = useState("default");
-
-  const changeCursor = () => {
-    setCursor((prevState) => {
-      return "default";
-    });
-  };
-
   // colors for piechart
   const COLORS = ["#8884d8", "#82ca9d", "#FFBB28", "#FF8042", "#AF19FF"];
   // aptitude score of all streams
@@ -115,15 +106,16 @@ function Chart() {
 
   return (
     // chart container with student, piechart, download and send email button
-    <div>
-      <div className="chart-container">
+    <div onClick={changeCursor}
+    style={{ cursor: cursor }}>
+      <div className='chart-container'>
         {/* header for desktop  with Logo and components Dashboard, Assessments, Test Reports, Student Reports and Admin */}
         <div className='admin-header-container'>
           <div className='admin-header-logo-container'>
             {/* logo */}
             <img
-              src="https://res.cloudinary.com/de5cu0mab/image/upload/v1688971136/Logo_Final_uovjgi.png"
-              alt="logo"
+              src='https://res.cloudinary.com/de5cu0mab/image/upload/v1689847926/Logo_ForDark-BG_gx0djs.png'
+              alt='logo'
               className="logo"
               onClick={() => navigate("/")}
             />
@@ -240,49 +232,45 @@ function Chart() {
         <div className='button-container'>
           <div className="buttons-cont">
           {/* download button to download the score card */}
-          <div className="">
-            <button
-              type="button"
-              style={{
-                backgroundColor: "#004461",
-                margin: "10px",
-              }}
-              className="send"
-              onClick={generatePdf}
-            >
-              Download Score
-            </button>
-            {/* send email button to send the score card through email*/}
-            <button
-              style={{
-                backgroundColor: "darkgrey",
-                margin: "10px",
-              }}
-              onClick={() => sendMail(data)}
-              className="send"
-            >
-              Send Email
-            </button>
+          <button
+            type='button'
+            style={{
+              backgroundColor: "#004461",
+            }}
+            className='send'
+            onClick={generatePdf}
+          >
+            Download Score
+          </button>
+          {/* send email button to send the score card through email*/}
+          <button
+            style={{
+              backgroundColor: "darkgrey",
+            }}
+            onClick={() => sendMail(data)}
+            className='send'
+          >
+            Send Email
+          </button>
           </div>
           {/* clicking view Data button to navigate to studentBarChart route*/}
-          <div className="">
-            <button
-              style={{ backgroundColor: "#ED2B2A", margin: "10px" }}
-              onClick={() => navigate("/studentBarChart", { state: data })}
-              className="send"
-            >
-              View Details
-            </button>
-            <button
-              style={{
-                backgroundColor: "#004461",
-                margin: "10px",
-              }}
-              className="send"
-              onClick={() => onClickSendManually(data)}
-            >
-              Send Manually
-            </button>
+          <div className="buttons-cont">
+          <button
+            style={{ backgroundColor: "#ED2B2A" }}
+            onClick={() => navigate("/studentBarChart", { state: data })}
+            className='send'
+          >
+            View Details
+          </button>
+          <button
+            style={{
+              backgroundColor: "#004461",
+            }}
+            className='send'
+            onClick={() => onClickSendManually(data)}
+          >
+            Send Manually
+          </button>
           </div>
         </div>
         {/* react-bootstrap modal for including cc */}

@@ -1,118 +1,120 @@
 /* Home component css */
-.home-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+.home-container{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
-.headerContainer {
-  background-color: #004461;
-  color: white;
-  height: 60px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding-right: 15px;
-  padding-left: 15px;
-  border: 1px solid black;
-}
-
-.headerLogoContainer {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.logo {
-  height: 50px;
-  width: 100px;
-}
-.test-heading {
-  color: #ffffff;
-  font-size: 8px;
+.headerContainer{
+    background-color:#004461;
+    color:white;
+    height:60px;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+    padding-right:15px;
+    padding-left:15px;
+    border:1px solid black;
 }
 
-.desktopHeaderNavbarContainer {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+.headerLogoContainer{
+    height:100%; 
+    display:flex; 
+    flex-direction: column;
+    justify-content:center ;
+    align-items:center;
+}
+.logo{
+    margin-top: 5px;
+    height:50px;
+    width:100px; 
+}
+.test-heading{
+    color: #FFFFFF;
+    font-size: 8px;
 }
 
-.mobileHeaderNavbarContainer {
-  display: none;
+.desktopHeaderNavbarContainer{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
 }
 
-.headerNavbarLink {
-  color: #004461;
-  width: 170px;
-  height: 50px;
-  font-weight: bold;
-  font-size: 20px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-left: 0px;
-  transition: border-color 0.66s ease-out, font-size 0.3s ease-out;
+.mobileHeaderNavbarContainer{
+    display:none;
 }
-.headerDesktopNavbarLink {
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-right: 20px;
-  transition: border-color 0.66s ease-out, font-size 0.3s ease-out;
+
+.headerNavbarLink{
+    color:#004461;
+    width:170px;
+    height:50px;
+    font-weight:bold;
+    font-size:20px;
+    margin-top:10px;
+    margin-bottom:10px;
+    margin-left: 0px;
+    transition: border-color 0.66s ease-out, font-size 0.3s ease-out;
 }
-.headerDesktopNavbarLink:hover {
+.headerDesktopNavbarLink{
+    color:white;
+    font-weight:bold;
+    font-size:20px;
+    margin-top:10px;
+    margin-bottom:10px;
+    margin-right: 20px;
+    transition: border-color 0.66s ease-out, font-size 0.3s ease-out;
+}
+.headerDesktopNavbarLink:hover{
   background-position: 100% 100%;
   transform: scale(1);
   transition: transform 1s;
-  color: #ed2b2a;
+  color:#ED2B2A;
 }
-.headerNavbarLink:hover {
-  background-position: 100% 100%;
+.headerNavbarLink:hover{
+ background-position: 100% 100%;
   transform: scale(1.3);
   transition: transform 1s;
-  color: #ed2b2a;
+  color:#ED2B2A;
 }
 
-@media (max-width: 768px) {
-  .desktopHeaderNavbarContainer {
-    display: none;
-  }
-  .mobileHeaderNavbarContainer {
+@media (max-width:768px){
+    .desktopHeaderNavbarContainer{
+        display:none;
+    }
+    .mobileHeaderNavbarContainer{
+        display:flex;
+        justify-content:flex-start;
+        align-items:flex-start;
+        font-size:50px;
+        
+    }
+
+    .admin-hamburger-btn{
+        color:white;
+        border:none;
+        font-size: 25px;
+        background-color:transparent;
+    }
+    
+    .admin-mobile-hamburger-menu{
+        color:white;
+        margin-bottom: 20px;
+        list-style: none;
+    }
+}
+.text-container{
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    font-size: 50px;
-  }
-
-  .admin-hamburger-btn {
-    color: white;
-    border: none;
-    font-size: 25px;
-    background-color: transparent;
-  }
-
-  .admin-mobile-hamburger-menu {
-    color: white;
-    margin-bottom: 20px;
-    list-style: none;
-  }
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #010000;
+    background-color: #aed9f5;
+    height: 100vh;
+    font-size: 40px;
 }
-.text-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: #010000;
-  background-color: #aed9f5;
-  height: 100vh;
-  font-size: 40px;
-}
-@media screen and (max-width: 400px) {
-  .text-container {
-    font-size: 20px;
-  }
+@media screen and (max-width:400px){
+    .text-container{
+        font-size: 20px;
+    }
 }

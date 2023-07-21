@@ -53,13 +53,7 @@ function SendAssessments(props) {
           .split(" ")
           .map(
             (row) =>
-              row
-                .split(",")
-                .filter((field) =>
-                  /^[^\s@]+@[a-z]+(.ac|.edu|.gov|.mil|)+(.com|.in|.net|.org|.co|)+(.au|.us|.uk|)$/gi.test(
-                    field
-                  )
-                ) // reads the txt file and filters all the emails
+              row.split(",").filter((field) => (/^[^\s@]+@[a-z]+(.ac|.edu|.gov|.mil|)+(.com|.in|.net|.org|.co|)+(.au|.us|.uk|)$/gi.test(field))) // reads the txt file and filters all the emails
           )
           .filter((row) => row.length > 0);
         const mails = emailList.join(","); // changes the emails list to comma(,) separated string
@@ -72,13 +66,7 @@ function SendAssessments(props) {
         const sheet = workbook.Sheets[sheetName];
         const data = utils.sheet_to_json(sheet, { header: 1 });
         const filteredData = data
-          .map((row) =>
-            row.filter((field) =>
-              /^[^\s@]+@[a-z]+(.ac|.edu|.gov|.mil|)+(.com|.in|.net|.org|.co|)+(.au|.us|.uk|)$/gi.test(
-                field
-              )
-            )
-          ) // filters all the mails
+          .map((row) => row.filter((field) => (/^[^\s@]+@[a-z]+(.ac|.edu|.gov|.mil|)+(.com|.in|.net|.org|.co|)+(.au|.us|.uk|)$/gi.test(field)))) // filters all the mails
           .filter((row) => row.length > 0);
         const emailList = filteredData.flat().join(","); //change the mail list to string
         console.log(emailList);
@@ -94,13 +82,7 @@ function SendAssessments(props) {
           .split(" ")
           .map(
             (row) =>
-              row
-                .split(",")
-                .filter((field) =>
-                  /^[^\s@]+@[a-z]+(.ac|.edu|.gov|.mil|)+(.com|.in|.net|.org|.co|)+(.au|.us|.uk|)$/gi.test(
-                    field
-                  )
-                ) // filters all the mails
+              row.split(",").filter((field) => (/^[^\s@]+@[a-z]+(.ac|.edu|.gov|.mil|)+(.com|.in|.net|.org|.co|)+(.au|.us|.uk|)$/gi.test(field))) // filters all the mails
           )
           .filter((row) => row.length > 0);
         const mails = emailList.join(","); // changes the mail list into comma separated string
@@ -137,7 +119,8 @@ function SendAssessments(props) {
     const imageUrl =
       "https://res.cloudinary.com/de5cu0mab/image/upload/v1688971136/Logo_Final_uovjgi.png";
     const body =
-      "Dear Candidate: %0D%0A     We are pleased to invite you to write a stream recommendation test that will help us pick a career path that suits your aptitude and interests.  %0D%0AHere is the link to our free test: https://study-global.netlify.app/studentLogin %0D%0A %0D%0AThank You%0D%0AStudy Global Team  %0D%0A %0D%0A %0D%0A"; // email  body
+      "Hello Students, %0D%0A  %0D%0AGreetings from Study Global. Below is the link for you to give the Stream Recommendation Test, which will help you choose a career path that suits your aptitude and interests. %0D%0A %0D%0AHere is the link: https://study-global.netlify.app/studentLogin %0D%0A  %0D%0A ";
+
     // send mail when file format is txt, docx, xls, xlsx
     if (
       fileExtension === "txt" ||
