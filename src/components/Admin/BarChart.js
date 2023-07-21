@@ -27,7 +27,7 @@ import {
 } from "recharts";
 
 function StudentBarChart() {
-  const [cursor, setCursor] = useState('default');
+  const [cursor, setCursor] = useState("default");
   // detailsPdf is a useref hook used to persist values between renders
   const detailsPdf = useRef();
   // location varaiable to get location of the testReports route and state
@@ -42,6 +42,13 @@ function StudentBarChart() {
   const [isOpen, setIsOpen] = useState(false);
   // colors for Barchart
   const COLORS = ["#8884d8", "#82ca9d", "#AF19FF", "#FF8042", "#FFBB28"];
+  const [cursor, setCursor] = useState("default");
+
+  const changeCursor = () => {
+    setCursor((prevState) => {
+      return "default";
+    });
+  };
   // aptitude score of all streams
   const aptitude_score =
     data.humanities_aptitude_score +
@@ -98,7 +105,7 @@ function StudentBarChart() {
   // generatePdf function used to generate the pdf which includes student details along with all streams aptitude and interest scores piechart when clicking on the download button in the component
   const generatePdf = useReactToPrint({
     content: () => detailsPdf.current,
-    documentTitle: data.Full_Name+'_score_report',
+    documentTitle: data.Full_Name + "_score_report",
   });
   // handle Submit function used to sent email to students regarding candidate details and scores through email
   const handleSubmit = (item) => {
@@ -138,44 +145,43 @@ function StudentBarChart() {
   };
 
   const changeCursor = () => {
-    setCursor(prevState => {
-      return 'default';
+    setCursor((prevState) => {
+      return "default";
     });
-  }
+  };
   return (
-    <div onClick={changeCursor}
-    style={{ cursor: cursor }}>
-      <div className='barchart-container'>
+    <div>
+      <div className="barchart-container">
         {/* header for desktop  with Logo and components Dashboard, Assessments, Test Reports, Student Reports and Admin */}
-        <div className='admin-header-container'>
-          <div className='admin-header-logo-container'>
+        <div className="admin-header-container">
+          <div className="admin-header-logo-container">
             {/* logo */}
             <img
-              src='https://res.cloudinary.com/de5cu0mab/image/upload/v1689847926/Logo_ForDark-BG_gx0djs.png'
-              alt='logo'
+              src="https://res.cloudinary.com/de5cu0mab/image/upload/v1688971136/Logo_Final_uovjgi.png"
+              alt="logo"
               className="logo"
               onClick={() => navigate("/")}
             />
             <h6 className="test-heading">Stream Recommendation Test</h6>
           </div>
-          <div className='admin-desktop-header-navbar-container'>
+          <div className="admin-desktop-header-navbar-container">
             {/* when clicking this Home text, it'll navigates to home route*/}
             <p
-              className='admin-desktop-header-navbar-link'
+              className="admin-desktop-header-navbar-link"
               onClick={() => navigate("/")}
             >
               Home
             </p>
             {/* when clicking this Admin text, it'll navigates to admin login route and again admin can access all routes */}
             <p
-              className='admin-desktop-header-navbar-link'
+              className="admin-desktop-header-navbar-link"
               onClick={() => navigate("/adminLogin")}
             >
               Admin
             </p>
           </div>
           {/* nav header for mobile  with Logo and components Dashboard, Assessments, Test Reports, Student Reports and Admin */}
-          <div className='admin-mobile-header-navbar-container'>
+          <div className="admin-mobile-header-navbar-container">
             <Popup
               contentStyle={{
                 width: "70%",
@@ -187,24 +193,24 @@ function StudentBarChart() {
                 alignItems: "center",
               }}
               trigger={
-                <button className='admin-hamburger-btn'>
+                <button className="admin-hamburger-btn">
                   <GiHamburgerMenu />
                 </button>
               }
-              position='bottom right'
+              position="bottom right"
             >
-              <ul className='admin-mobile-hamburger-menu'>
+              <ul className="admin-mobile-hamburger-menu">
                 {/* when clicking this Home text, it'll navigates to home route*/}
                 <li
                   onClick={() => navigate("/")}
-                  className='admin-header-navbar-link'
+                  className="admin-header-navbar-link"
                 >
                   Home
                 </li>
                 {/* when clicking this Admin text, it'll navigates to admin login route and again admin can access all routes */}
                 <li
                   onClick={() => navigate("/adminLogin")}
-                  className='admin-header-navbar-link'
+                  className="admin-header-navbar-link"
                 >
                   Admin
                 </li>
@@ -216,28 +222,28 @@ function StudentBarChart() {
         <div ref={detailsPdf} className="pdf-only">
           <PdfContent streamsContent={streams} data={data} />
         </div>
-          <div>
-          <h1 className='rank-heading'>Stream Recommendation</h1>
-          <div className='barchart-student-container'>
-            <h1 className='student-details-heading'>Student Details</h1>
-            <div className='barchart-student-details-container'>
-              <div className='barchart-student-details'>
+        <div>
+          <h1 className="rank-heading">Stream Recommendation</h1>
+          <div className="barchart-student-container">
+            <h1 className="student-details-heading">Student Details</h1>
+            <div className="barchart-student-details-container">
+              <div className="barchart-student-details">
                 <p>Name : {data.Full_Name} </p>
                 <p>Test Completed On : {data.Timestamp}</p>
               </div>
-              <div className='barchart-student-details'>
+              <div className="barchart-student-details">
                 <p>Email Address : {data.Email_Address} </p>
                 <p>Phone Number : {data.Phone_Number}</p>
               </div>
             </div>
           </div>
-          <div className='barchart-container-responsive'>
-            <div className='tables-container'>
-              <h1 className='barchart-heading'>
+          <div className="barchart-container-responsive">
+            <div className="tables-container">
+              <h1 className="barchart-heading">
                 Stream wise aptitude and interest score
               </h1>
-              <div className='table-container'>
-                <table border='2px'>
+              <div className="table-container">
+                <table border="2px">
                   <thead>
                     <tr>
                       <th>Stream</th>
@@ -259,11 +265,11 @@ function StudentBarChart() {
                 </table>
               </div>
               {/*All Streams Scores of Student in Stream Recommendation Test  */}
-              <h1 className='barchart-heading'>
+              <h1 className="barchart-heading">
                 Student interest according to stream
               </h1>
-              <div className='table-container'>
-                <table border='2px'>
+              <div className="table-container">
+                <table border="2px">
                   <thead>
                     <tr>
                       <th>Stream</th>
@@ -295,12 +301,12 @@ function StudentBarChart() {
                 </table>
               </div>
             </div>
-            <h1 className='barchart-heading'>
+            <h1 className="barchart-heading">
               All streams Total Score Bar Chart
             </h1>
-            <div className='barchart-table-container'>
+            <div className="barchart-table-container">
               {/* bar chart of all streams total scores of stream recommendation test */}
-              <div className='barchart'>
+              <div className="barchart">
                 <BarChart
                   width={300}
                   height={300}
@@ -312,19 +318,19 @@ function StudentBarChart() {
                     bottom: 5,
                   }}
                 >
-                  <CartesianGrid strokeDasharray='3 3' />
+                  <CartesianGrid strokeDasharray="3 3" />
                   <Tooltip wrapperStyle={{ top: 0, left: 0 }} />
-                  <Bar dataKey='score' fill='green' barSize={30}>
+                  <Bar dataKey="score" fill="green" barSize={30}>
                     {BarchartData.map((entry, index) => (
                       <Cell key={`cell-${index}`} fill={COLORS[index % 20]} />
                     ))}
                   </Bar>
                   <XAxis
-                    dataKey='name'
+                    dataKey="name"
                     style={{ fontSize: "8px", fontWeight: "bold" }}
                   />
                   <YAxis
-                    type='number'
+                    type="number"
                     style={{ fontSize: "15px", fontWeight: "bold" }}
                     domain={[0, 20]}
                   />
@@ -333,50 +339,64 @@ function StudentBarChart() {
             </div>
           </div>
           <div>
-            <p className='copyright'>
+            <p className="copyright">
               @{new Date().getFullYear()} Study Global OverSeas Education
               Consultants. All right reserved.
             </p>
           </div>
         </div>
-        <div className='barchart-buttons-container'>
-          {/* By clicking Download button, pdf with student data can be dowloaded */}
-          <div className="buttons-cont">
-          <button
-            type='button'
-            style={{ backgroundColor: "#004461" }}
-            className='send-btn'
-            onClick={generatePdf}
-          >
-            Download Score
-          </button>
-          {/* By clicking the Send Email button, the boolean value of isOpen will be changed */}
-          <button
-            style={{ backgroundColor: "darkgrey" }}
-            onClick={() => sendMail(data)}
-            className='send-btn'
-          >
-            Send Email
-          </button>
+        <div className="barchart-buttons-container">
+          <div className="">
+            {/* By clicking Download button, pdf with student data can be dowloaded */}
+            <button
+              type="button"
+              style={{
+                backgroundColor: "#004461",
+                width: "140px",
+                margin: "5px",
+              }}
+              className="send-btn"
+              onClick={generatePdf}
+            >
+              Download Score
+            </button>
+            {/* By clicking the Send Email button, the boolean value of isOpen will be changed */}
+            <button
+              style={{
+                backgroundColor: "darkgrey",
+                width: "140px",
+                margin: "5px",
+              }}
+              onClick={() => sendMail(data)}
+              className="send-btn"
+            >
+              Send Email
+            </button>
           </div>
-          {/* By clicking the view score button, studentChart route will be navigated */}
-          <div className="buttons-cont">
-          <button
-            style={{ backgroundColor: "#ED2B2A" }}
-            onClick={() => navigate("/studentChart", { state: data })}
-            className='send-btn'
-          >
-            View Report
-          </button>
-          <button
-            className='send-btn'
-            style={{
-              backgroundColor: "#004461",
-            }}
-            onClick={() => onClickSendManually(data)}
-          >
-            Send Manually
-          </button>
+          <div className="">
+            {/* By clicking the view score button, studentChart route will be navigated */}
+            <button
+              style={{
+                backgroundColor: "#ED2B2A",
+                width: "140px",
+                margin: "5px",
+              }}
+              onClick={() => navigate("/studentChart", { state: data })}
+              className="send-btn"
+            >
+              View Report
+            </button>
+            <button
+              className="send-btn"
+              style={{
+                backgroundColor: "#004461",
+                width: "140px",
+                margin: "5px",
+              }}
+              onClick={() => onClickSendManually(data)}
+            >
+              Send Manually
+            </button>
           </div>
         </div>
         {/* react-bootstrap modal for including cc */}
@@ -387,12 +407,12 @@ function StudentBarChart() {
           <Modal.Body>
             <Form.Group>
               <Form.Label>Student Mail ID: </Form.Label>
-              <Form.Control type='text' value={data.Email_Address} />
+              <Form.Control type="text" value={data.Email_Address} />
             </Form.Group>
             <Form.Group>
               <Form.Label>CC Mail ID's: </Form.Label>
               <Form.Control
-                type='text'
+                type="text"
                 value={mailId}
                 onChange={(e) => setMailId(e.target.value)}
               />
@@ -401,8 +421,8 @@ function StudentBarChart() {
           <Modal.Footer>
             {/* when clicking send Email buton, email will be sent to student */}
             <Button
-              variant='primary'
-              type='submit'
+              variant="primary"
+              type="submit"
               onClick={() => {
                 handleSubmit(mailId);
                 setIsOpen(!isOpen);

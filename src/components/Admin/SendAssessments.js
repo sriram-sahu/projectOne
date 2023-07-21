@@ -137,8 +137,7 @@ function SendAssessments(props) {
     const imageUrl =
       "https://res.cloudinary.com/de5cu0mab/image/upload/v1688971136/Logo_Final_uovjgi.png";
     const body =
-      "Hello Students, %0D%0A  %0D%0AGreetings from Study Global. Below is the link for you to give the Stream Recommendation Test, which will help you choose a career path that suits your aptitude and interests. %0D%0A %0D%0AHere is the link: https://study-global.netlify.app/studentLogin %0D%0A  %0D%0A http://www.overseaseducation.net";
-
+      "Dear Candidate: %0D%0A     We are pleased to invite you to write a stream recommendation test that will help us pick a career path that suits your aptitude and interests.  %0D%0AHere is the link to our free test: https://study-global.netlify.app/studentLogin %0D%0A %0D%0AThank You%0D%0AStudy Global Team  %0D%0A %0D%0A %0D%0A"; // email  body
     // send mail when file format is txt, docx, xls, xlsx
     if (
       fileExtension === "txt" ||
