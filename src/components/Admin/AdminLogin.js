@@ -18,10 +18,11 @@ const SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
 
 const AdminLogin = () => {
   // usestates of isDashboard, isAssessment, isTestReports to store boolen value
+  const [cursor, setCursor] = useState('default');
+  const [isOpen, setIsOpen] = useState(false);
   const [isDashboard, setIsDashboard] = useState(false);
   const [isAssessment, setIsAssessment] = useState(false);
   const [isTestReports, setIsTestReports] = useState(false);
-  const [isPopUpOpen, setIsPopUpOpen] = useState(false);
   // streamData usestate to store data responses for all tests
   const [streamData, setStreamData] = useState([]);
   // usestate to store user email of client
@@ -144,6 +145,12 @@ const AdminLogin = () => {
     loadGoogleAPI();
   }, []);
 
+  let schoolNames=[]
+  for (let i of streamData){
+    schoolNames.push(i.School_Name)
+  }
+  schoolNames=[...new Set(schoolNames)]
+
   // fetchStreamTabulationData function used to calculate all streams scores of stream recommendation test and will be added to streamData responses
   const fetchStreamTabulationData = () => {
     // map method for streamData
@@ -189,6 +196,7 @@ const AdminLogin = () => {
       let science_bio_interests_score = 0;
       let science_math_aptitude_score = 0;
       let science_math_interests_score = 0;
+      
       // using map method for keys of object in stream Data to calculate scores
       Object.keys(item).map((score, i) => {
         if (i > 9 && i < 90) {
@@ -254,29 +262,28 @@ const AdminLogin = () => {
         commerce_interests_score +
         science_bio_interests_score +
         science_math_interests_score;
-      item.humanities_aptitude_score = humanities_aptitude_score;
-      item.humanities_interests_score = humanities_interests_score;
-      item.commerce_aptitude_score = commerce_aptitude_score;
-      item.commerce_interests_score = commerce_interests_score;
-      item.science_bio_aptitude_score = science_bio_aptitude_score;
-      item.science_bio_interests_score = science_bio_interests_score;
-      item.science_math_aptitude_score = science_math_aptitude_score;
-      item.science_math_interests_score = science_math_interests_score;
-      item.humanities_score =
-        humanities_aptitude_score + humanities_interests_score;
-      item.commerce_score = commerce_aptitude_score + commerce_interests_score;
-      item.science_bio_score =
-        science_bio_aptitude_score + science_bio_interests_score;
-      item.science_math_score =
-        science_math_aptitude_score + science_math_interests_score;
-      item.total_score = total_score;
-      item.percentage =
+        item.humanities_aptitude_score = humanities_aptitude_score;
+        item.humanities_interests_score = humanities_interests_score;
+        item.commerce_aptitude_score = commerce_aptitude_score;
+        item.commerce_interests_score = commerce_interests_score;
+        item.science_bio_aptitude_score = science_bio_aptitude_score;
+        item.science_bio_interests_score = science_bio_interests_score;
+        item.science_math_aptitude_score = science_math_aptitude_score;
+        item.science_math_interests_score = science_math_interests_score;
+        item.humanities_score =
+          humanities_aptitude_score + humanities_interests_score;
+        item.commerce_score = commerce_aptitude_score + commerce_interests_score;
+        item.science_bio_score =
+          science_bio_aptitude_score + science_bio_interests_score;
+        item.science_math_score =
+          science_math_aptitude_score + science_math_interests_score;
+        item.total_score = total_score;
+        item.percentage =
         ((total_score / process.env.REACT_APP_TOTAL_QUESTIONS) * 100).toFixed(
           2
         ) + "%";
     });
   };
-  console.log(typeof process.env.REACT_APP_TOTAL_QUESTIONS, "env");
 
   // after component rendering, fetchStreamTabulationData function logic will execute
   useEffect(() => {
@@ -305,80 +312,83 @@ const AdminLogin = () => {
     setIsDashboard(false);
     setIsAssessment(false);
     setIsTestReports(false);
-    setIsPopUpOpen(false);
   };
   // handleDashboard function to set useState of isDashboard to true and others to false
   const handleDashboard = () => {
     setIsDashboard(true);
     setIsAssessment(false);
     setIsTestReports(false);
-    setIsPopUpOpen(false);
   };
   // handleAssessment function to set useState of isAssessment to true and others to false
   const handleAssessment = () => {
     setIsDashboard(false);
     setIsAssessment(true);
     setIsTestReports(false);
-    setIsPopUpOpen(false);
   };
   // handleTestReports function to set useState of isTestReports to true and others to false
   const handleTestReports = () => {
     setIsDashboard(false);
     setIsAssessment(false);
     setIsTestReports(true);
-    setIsPopUpOpen(false);
   };
+  const changeCursor = () => {
+    setCursor(prevState => {
+      return 'default';
+    });
+  }
 
   return (
     <div>
-      <div className="admin-container">
+      <div className='admin-container' onClick={changeCursor}
+    style={{ cursor: cursor }}>
         {isSignedIn ? (
           // if admin has signedIn, the below code will render
-          <div className="admin-header-container">
+          <div className='admin-header-container'>
             {/* header for desktop  with Logo and components Dashboard, Assessments, Test Reports, Student Reports and Sign Out */}
-            <div className="admin-header-logo-container">
+            <div className='admin-header-logo-container'>
               {/* logo and after clicking this logo, it'll navigates to home route*/}
               <img
-                src="https://res.cloudinary.com/de5cu0mab/image/upload/v1688971136/Logo_Final_uovjgi.png"
-                alt="logo"
-                className="logo"
-                onClick={() => navigate("/")}
-              />
-              <h6 className="test-heading">Stream Recommendation Test</h6>
+              src='https://res.cloudinary.com/de5cu0mab/image/upload/v1689847926/Logo_ForDark-BG_gx0djs.png'
+              alt='logo'
+              className="logo"
+              onClick={() => navigate("/")}
+            />
+            <h6 className="test-heading">Stream Recommendation Test</h6>
             </div>
-            <div className="admin-desktop-header-navbar-container">
+            <div className='admin-desktop-header-navbar-container'>
               {/* when clicking this Dashboard text, it'll navigates to dashboard route */}
               <p
                 onClick={() => handleDashboard()}
-                className="admin-desktop-header-navbar-link"
+                className={isDashboard ? 'dashboard' :'admin-desktop-header-navbar-link'}
               >
                 Dashboard
               </p>
               {/* when clicking this Assessments text, it'll navigates to send assessments route */}
               <p
                 onClick={() => handleAssessment()}
-                className="admin-desktop-header-navbar-link"
+                className={isAssessment ? 'dashboard' :'admin-desktop-header-navbar-link'}
               >
                 Assessments
               </p>
               {/* when clicking this Test Report text, it'll navigates to test report route */}
               <p
                 onClick={() => handleTestReports()}
-                className="admin-desktop-header-navbar-link"
+                className={isTestReports ? 'dashboard' :'admin-desktop-header-navbar-link'}
               >
                 Test Report
               </p>
               {/* when clicking this Sign Out text, it'll navigates to admin login route and agains admin needs to sign in to access all routes */}
               <p
-                className="admin-desktop-header-navbar-link"
+                className='admin-desktop-header-navbar-link'
                 onClick={handleSignOut}
               >
                 Sign Out
               </p>
             </div>
             {/* nav header for mobile  with Logo and components Dashboard, Assessments, Test Report and Sign Out */}
-            <div className="admin-mobile-header-navbar-container">
+            <div className='admin-mobile-header-navbar-container'>
               <Popup
+                
                 contentStyle={{
                   width: "70%",
                   backgroundColor: "white",
@@ -389,40 +399,46 @@ const AdminLogin = () => {
                   alignItems: "center",
                 }}
                 trigger={
-                  <button className="admin-hamburger-btn">
-                    <GiHamburgerMenu onClick={() => setIsPopUpOpen(true)} />
+                  <button className='admin-hamburger-btn' >
+                    <GiHamburgerMenu onClick={()=>setIsOpen(true)} />
                   </button>
                 }
-                position="bottom right"
-                open={isPopUpOpen}
-                onClose={() => setIsPopUpOpen(false)}
+                position='bottom right'
+                open={isOpen} 
+                onClose={()=>setIsOpen(false)}
               >
-                <ul className="admin-mobile-hamburger-menu">
+                <ul className='admin-mobile-hamburger-menu'>
                   {/* when clicking this Dashboard text, it'll navigates to dashboard route */}
                   <li
-                    onClick={() => handleDashboard()}
-                    className="admin-header-navbar-link"
+
+                    onClick={() => {handleDashboard()
+                      setIsOpen(false)
+                    }}
+                    className='admin-header-navbar-link'
                   >
                     Dashboard
                   </li>
                   {/* when clicking this Assessments text, it'll navigates to send assessments route */}
                   <li
-                    onClick={() => handleAssessment()}
-                    className="admin-header-navbar-link"
+                    onClick={() => {handleAssessment()
+                      setIsOpen(false)}}
+                    className='admin-header-navbar-link'
                   >
                     Assessments
                   </li>
                   {/* when clicking this Test Report text, it'll navigates to test report route */}
                   <li
-                    onClick={() => handleTestReports()}
-                    className="admin-header-navbar-link"
+                    onClick={() => {handleTestReports()
+                      setIsOpen(false)}}
+
+                    className='admin-header-navbar-link'
                   >
                     Test Report
                   </li>
                   {/* when clicking this Sign Out text, it'll navigates to admin login route and agains admin needs to sign in to access all routes */}
                   <li
                     onClick={handleSignOut}
-                    className="admin-header-navbar-link"
+                    className='admin-header-navbar-link'
                   >
                     Sign Out
                   </li>
@@ -432,20 +448,20 @@ const AdminLogin = () => {
           </div>
         ) : (
           // if admin hasn't signedIn, the below code will render
-          <div className="display-column">
+          <div className='display-column'>
             <h2>Login With Google</h2>
             {/* if admin clicks this button, he can sign in into his account and get access for all routes */}
-            <button onClick={handleSignIn} className="google-signin-button">
+            <button onClick={handleSignIn} className='google-signin-button'>
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
-                alt="Google Logo"
+                src='https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg'
+                alt='Google Logo'
               />
               Sign In with Google
             </button>
           </div>
         )}
         {/* if isDashboard is true then Dashboard component will render */}
-        {isDashboard && <Dashboard datat={streamData} />}
+        {isDashboard && <Dashboard datat={streamData} schoolNames={schoolNames} />}
         {/* if isAssessment is true then SendAssessments component will render */}
         {isAssessment && <SendAssessments datat={streamData} />}
         {/* if isTestReports is true then TestReport component will render */}

@@ -10,7 +10,9 @@ import "./index.css";
 
 function Dashboard(props) {
   // location varaiable to get location of the dashboard route and state
-  const { datat } = props;
+  const [cursor, setCursor] = useState('default');
+  const { datat,schoolNames } = props;
+  const [selectedFilter, setSelectedFilter] = useState('')
   const location = useLocation();
   // navigate variable used to naviagating to different routes
   const navigate = useNavigate();
@@ -38,6 +40,24 @@ function Dashboard(props) {
     // set filter data array to setFilterData function
     setFilterData(filtered);
   };
+  let school_Names=['select school name'].concat(schoolNames)
+
+  const handleFilterChange = (event) => {
+    const selectedSchoolName = event.target.value
+    setSelectedFilter(selectedSchoolName)
+
+    // Filter the data based on the selected School Name
+    
+  };
+  let filterData1 = filterData.filter((item) => {
+    return item.School_Name === selectedFilter
+  });
+ if (selectedFilter==='select school name' || selectedFilter===''){
+  filterData1=filterData
+ }else{
+  filterData1=filterData1
+ }
+
 
   // initializing all streams aptitude, interest, total scores and percentages to zero
   let humanities_total_score = 0,
@@ -65,7 +85,7 @@ function Dashboard(props) {
     science_with_math_aptitude_percentage = 0,
     science_with_math_interest_percentage = 0;
   // using map method for data to calculate different streams scores of all students
-  filterData.map((item, index) => {
+  filterData1.map((item, index) => {
     // all streams total scores of all students
     humanities_total_score += item.humanities_score;
     commerce_total_score += item.commerce_score;
@@ -88,19 +108,19 @@ function Dashboard(props) {
   // all streams total scores percentages of all students
   humanities_percentage =
     (humanities_total_score /
-      (filterData.length *
+      (filterData1.length *
         (parseInt(process.env.REACT_APP_HUMANITIES_APTITIUDE_QUESTIONS) +
           parseInt(process.env.REACT_APP_HUMANITIES_INTERESTS_QUESTIONS)))) *
     100;
   commerce_percentage =
     (commerce_total_score /
-      (filterData.length *
+      (filterData1.length *
         (parseInt(process.env.REACT_APP_COMMERCE_APTITUDE_QUESTIONS) +
           parseInt(process.env.REACT_APP_COMMERCE_INTERESTS_QUESTIONS)))) *
     100;
   science_with_bio_percentage =
     (science_with_bio_total_score /
-      (filterData.length *
+      (filterData1.length *
         (parseInt(process.env.REACT_APP_SCIENCE_WITH_BIO_APTITUDE_QUESTIONS) +
           parseInt(
             process.env.REACT_APP_SCIENCE_WITH_BIO_INTERESTS_QUESTIONS
@@ -108,7 +128,7 @@ function Dashboard(props) {
     100;
   science_with_math_percentage =
     (science_with_maths_total_score /
-      (filterData.length *
+      (filterData1.length *
         (parseInt(process.env.REACT_APP_SCIENCE_WITH_MATH_APTITUDE_QUESTIONS) +
           parseInt(
             process.env.REACT_APP_SCIENCE_WITH_MATH_INTERESTS_QUESTIONS
@@ -118,44 +138,44 @@ function Dashboard(props) {
   // all streams aptitude total scores percentages of all students
   humanities_aptitude_percentage =
     (humanities_aptitude_total_score /
-      (filterData.length *
+      (filterData1.length *
         parseInt(process.env.REACT_APP_HUMANITIES_APTITIUDE_QUESTIONS))) *
     100;
   commerce_aptitude_percentage =
     (commerce_aptitude_total_score /
-      (filterData.length *
+      (filterData1.length *
         parseInt(process.env.REACT_APP_COMMERCE_APTITUDE_QUESTIONS))) *
     100;
   science_with_bio_aptitude_percentage =
     (science_with_bio_aptitude_total_score /
-      (filterData.length *
+      (filterData1.length *
         parseInt(process.env.REACT_APP_SCIENCE_WITH_BIO_APTITUDE_QUESTIONS))) *
     100;
   science_with_math_aptitude_percentage =
     (science_with_maths_aptitude_total_score /
-      (filterData.length *
+      (filterData1.length *
         parseInt(process.env.REACT_APP_SCIENCE_WITH_MATH_APTITUDE_QUESTIONS))) *
     100;
 
   // all streams interst total scores percentages of all students
   humanities_interest_percentage =
     (humanities_interest_total_score /
-      (filterData.length *
+      (filterData1.length *
         parseInt(process.env.REACT_APP_HUMANITIES_INTERESTS_QUESTIONS))) *
     100;
   commerce_interest_percentage =
     (commerce_interest_total_score /
-      (filterData.length *
+      (filterData1.length *
         parseInt(process.env.REACT_APP_COMMERCE_INTERESTS_QUESTIONS))) *
     100;
   science_with_bio_interest_percentage =
     (science_with_bio_interest_total_score /
-      (filterData.length *
+      (filterData1.length *
         parseInt(process.env.REACT_APP_SCIENCE_WITH_BIO_INTERESTS_QUESTIONS))) *
     100;
   science_with_math_interest_percentage =
     (science_with_maths_interest_total_score /
-      (filterData.length *
+      (filterData1.length *
         parseInt(
           process.env.REACT_APP_SCIENCE_WITH_MATH_INTERESTS_QUESTIONS
         ))) *
@@ -195,8 +215,14 @@ function Dashboard(props) {
       navigate("/notFound");
     }
   }, []);
+  const changeCursor = () => {
+    setCursor(prevState => {
+      return 'default';
+    });
+  }
   return (
-    <div className='main-container'>
+    <div className='main-container' onClick={changeCursor}
+    style={{ cursor: cursor }}>
       {/* dashboard container where all metrics were displayed */}
       <div className='dashboard-container'>
         <h1 className='dashboard-heading'>
@@ -241,8 +267,18 @@ function Dashboard(props) {
             Filter
           </button>
         </div>
+        {endDate < startDate && endDate && <p className="error">End Date Should Be Greater Than Start Date</p>}
+        {/* School Name Drop Down Filter */}
+        <div className="drop-down">
+          <h1 className="filter-school">Filter By School Name:</h1>
+          <select className="select" value={selectedFilter} onChange={handleFilterChange}>
+            {school_Names.map((schoolName,index)=>
+              <option className='option' value={schoolName} key={index}>{schoolName}</option>
+            )}
+          </select>
+        </div>
         {/* if filterData length if greater than zero then below code will execute */}
-        {filterData.length ? (
+        {filterData1.length ? (
           <h2 className='allmetricsHeading'>
             Below Metrics are about percentage of each stream which are
             correctly answered by students
@@ -250,14 +286,14 @@ function Dashboard(props) {
         ) : null}
         <div style={{ textAlign: "center" }}>
           <button className='totaltestconductedbutton'>
-            Total Tests Conducted: {filterData.length}
+            Total Tests Conducted: {filterData1.length}
           </button>
         </div>
         <br />
         {/* all streams pie charts */}
         <div className='test-chart'>
           {/* all streams total scores percentages pie chart */}
-          {filterData.length ? (
+          {filterData1.length ? (
             <div className='piechart-container'>
               <Chart
                 width={250}
@@ -268,9 +304,9 @@ function Dashboard(props) {
                 options={{
                   colors: ["#0e3ab3", "#f05232", "#e89510", "#2b8a3c"],
                   title: `All Streams Total Metric: ${
-                    filterData.length === 1
+                    filterData1.length === 1
                       ? "1 test"
-                      : `${filterData.length} tests`
+                      : `${filterData1.length} tests`
                   }`,
                   legend: "none",
                 }}
@@ -305,7 +341,7 @@ function Dashboard(props) {
             </div>
           ) : null}
           {/* all streams aptitude total scores percentages pie chart */}
-          {filterData.length ? (
+          {filterData1.length ? (
             <div className='piechart-container'>
               <Chart
                 width={250}
@@ -316,9 +352,9 @@ function Dashboard(props) {
                 options={{
                   colors: ["#963596", "#5c9ed1", "#e62e81", "#62b027"],
                   title: `All Streams Aptitude Metric: ${
-                    filterData.length === 1
+                    filterData1.length === 1
                       ? "1 test"
-                      : `${filterData.length} tests`
+                      : `${filterData1.length} tests`
                   }`,
                   legend: "none",
                 }}
@@ -356,7 +392,7 @@ function Dashboard(props) {
             </div>
           ) : null}
           {/* all streams interest total scores percentages pie chart */}
-          {filterData.length ? (
+          {filterData1.length ? (
             <div className='piechart-container'>
               <Chart
                 width={250}
@@ -367,9 +403,9 @@ function Dashboard(props) {
                 options={{
                   colors: ["#b02709", "#102061", "#630fa8", "#88e615"],
                   title: `All Streams Interest Metric: ${
-                    filterData.length === 1
+                    filterData1.length === 1
                       ? "1 test"
-                      : `${filterData.length} tests`
+                      : `${filterData1.length} tests`
                   }`,
                   legend: "none",
                 }}

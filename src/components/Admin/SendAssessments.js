@@ -28,6 +28,14 @@ function SendAssessments(props) {
   const [fileExtension, setFileExtension] = useState("");
   // fileInputRef is react hook to persist values after render
   const fileInputRef = useRef(null);
+  const [cursor, setCursor] = useState("default");
+
+  const changeCursor = () => {
+    setCursor((prevState) => {
+      return "default";
+    });
+  };
+
   // triggers when file was uploaded
   const handleFileChange = (event) => {
     const file = event.target.files[0]; // imported file
@@ -45,7 +53,13 @@ function SendAssessments(props) {
           .split(" ")
           .map(
             (row) =>
-              row.split(",").filter((field) => field.endsWith("@gmail.com")) // reads the txt file and filters all the emails
+              row
+                .split(",")
+                .filter((field) =>
+                  /^[^\s@]+@[a-z]+(.ac|.edu|.gov|.mil|)+(.com|.in|.net|.org|.co|)+(.au|.us|.uk|)$/gi.test(
+                    field
+                  )
+                ) // reads the txt file and filters all the emails
           )
           .filter((row) => row.length > 0);
         const mails = emailList.join(","); // changes the emails list to comma(,) separated string
@@ -58,7 +72,13 @@ function SendAssessments(props) {
         const sheet = workbook.Sheets[sheetName];
         const data = utils.sheet_to_json(sheet, { header: 1 });
         const filteredData = data
-          .map((row) => row.filter((field) => field.endsWith("@gmail.com"))) // filters all the mails
+          .map((row) =>
+            row.filter((field) =>
+              /^[^\s@]+@[a-z]+(.ac|.edu|.gov|.mil|)+(.com|.in|.net|.org|.co|)+(.au|.us|.uk|)$/gi.test(
+                field
+              )
+            )
+          ) // filters all the mails
           .filter((row) => row.length > 0);
         const emailList = filteredData.flat().join(","); //change the mail list to string
         console.log(emailList);
@@ -74,7 +94,13 @@ function SendAssessments(props) {
           .split(" ")
           .map(
             (row) =>
-              row.split(",").filter((field) => field.endsWith("@gmail.com")) // filters all the mails
+              row
+                .split(",")
+                .filter((field) =>
+                  /^[^\s@]+@[a-z]+(.ac|.edu|.gov|.mil|)+(.com|.in|.net|.org|.co|)+(.au|.us|.uk|)$/gi.test(
+                    field
+                  )
+                ) // filters all the mails
           )
           .filter((row) => row.length > 0);
         const mails = emailList.join(","); // changes the mail list into comma separated string
@@ -108,8 +134,11 @@ function SendAssessments(props) {
   // triggers when send button clicked
   const handleSendEmail = () => {
     const subject = "Stream Recommendation Test from Study Global"; // email subject
+    const imageUrl =
+      "https://res.cloudinary.com/de5cu0mab/image/upload/v1688971136/Logo_Final_uovjgi.png";
     const body =
-      "Dear Candidate: %0D%0A     We are pleased to invite you to write a stream recommendation test that will help us pick a career path that suits your aptitude and interests.  %0D%0AHere is the link to our free test: https://study-global.netlify.app/studentLogin %0D%0A %0D%0AThank You%0D%0AStudy Global Team  %0D%0A %0D%0A %0D%0A"; // email  body
+      "Hello Students, %0D%0A  %0D%0AGreetings from Study Global. Below is the link for you to give the Stream Recommendation Test, which will help you choose a career path that suits your aptitude and interests. %0D%0A %0D%0AHere is the link: https://study-global.netlify.app/studentLogin %0D%0A  %0D%0A http://www.overseaseducation.net";
+
     // send mail when file format is txt, docx, xls, xlsx
     if (
       fileExtension === "txt" ||
@@ -118,7 +147,10 @@ function SendAssessments(props) {
       fileExtension === "docx"
     ) {
       // send mail using mailto for uploaded document
-      window.location.href = `mailto:overseaseducation1000@gmail.com?bcc=${allMails}&subject=${subject}&body=${body}`;
+      const fromAddress = "overseaseducation1000@gmail.com";
+      window.location.href =
+        `mailto:overseaseducation1000@gmail.com?bcc=${allMails}&subject=${subject}&body=${body}` +
+        `&from=${encodeURIComponent(fromAddress)}`;
       // takes all input mails given by admin and send mails
     } else if (mailSentType === "manual") {
       const modifiedEmailAddresses = allMails // removes extra spaces and and extra commas
@@ -147,8 +179,8 @@ function SendAssessments(props) {
     }
   }, []);
   return (
-    <div>
-      <div className='cards-container'>
+    <div onClick={changeCursor} style={{ cursor: cursor }}>
+      <div className="cards-container">
         <h1
           style={{
             textAlign: "center",
@@ -158,30 +190,30 @@ function SendAssessments(props) {
         >
           Send Assessments
         </h1>
-        <div className='assessments-container'>
+        <div className="assessments-container">
           <div>
             <div>
               <input
-                type='radio'
-                value='file'
-                id='file'
-                name='send'
+                type="radio"
+                value="file"
+                id="file"
+                name="send"
                 onChange={handleMailSentTypeChange}
-                className='radio'
+                className="radio"
               />
-              <label htmlFor='file' className='label'>
+              <label htmlFor="file" className="label">
                 Import Emails from File
               </label>
               <br />
               <input
-                type='radio'
-                value='manual'
-                id='manual'
-                name='send'
+                type="radio"
+                value="manual"
+                id="manual"
+                name="send"
                 onChange={handleMailSentTypeChange}
-                className='radio'
+                className="radio"
               />
-              <label htmlFor='manual' className='label'>
+              <label htmlFor="manual" className="label">
                 Enter Email Ids
               </label>
               <br />
@@ -191,11 +223,11 @@ function SendAssessments(props) {
                 {mailSentType === "file" ? (
                   <>
                     <input
-                      type='file'
+                      type="file"
                       ref={fileInputRef}
                       onChange={handleFileChange}
-                      accept='xls,xlsx,txt,docx'
-                      className='file-upload-btn'
+                      accept="xls,xlsx,txt,docx"
+                      className="file-upload-btn"
                     />
                     <p styles={{ fontSize: "15px" }}>
                       Support types: xls, xlsx, txt, docx
@@ -204,24 +236,24 @@ function SendAssessments(props) {
                 ) : (
                   <>
                     <textarea
-                      rows='6'
-                      cols='30'
+                      rows="6"
+                      cols="30"
                       onChange={(e) => setAllMails(e.target.value)}
-                      className='textarea d-lg-none'
-                      placeholder='Only enter comma or space separated email ids'
+                      className="textarea d-lg-none"
+                      placeholder="Only enter comma or space separated email ids"
                     ></textarea>
                     <textarea
-                      rows='6'
-                      cols='50'
+                      rows="6"
+                      cols="50"
                       onChange={(e) => setAllMails(e.target.value)}
-                      className='textarea d-none d-lg-block'
-                      placeholder='Only enter comma or space separated email ids'
+                      className="textarea d-none d-lg-block"
+                      placeholder="Only enter comma or space separated email ids"
                     ></textarea>
                   </>
                 )}
                 <br />
-                <div className='button'>
-                  <button className='send-ass-button' onClick={handleSendEmail}>
+                <div className="button">
+                  <button className="send-ass-button" onClick={handleSendEmail}>
                     Send Email
                   </button>
                 </div>

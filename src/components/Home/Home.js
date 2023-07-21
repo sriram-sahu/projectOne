@@ -1,6 +1,6 @@
 // Home component is about home page
 // import packages react, react-icons, reactjs-popup, react-router-dom and css files reactjs-popup/dist/index.css and index.css to render home component
-import React from "react";
+import React,{useState} from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
@@ -9,17 +9,24 @@ import Footer from "../Footer/Footer";
 import "./index.css";
 
 function Home() {
+  const [cursor, setCursor] = useState('default');
   // navigate variable used to naviagating to different routes
   const navigate = useNavigate();
+  const changeCursor = () => {
+    setCursor(prevState => {
+      return 'default';
+    });
+  }
   return (
-    <div>
+    <div onClick={changeCursor}
+    style={{ cursor: cursor }}>
       <div className='home-container'>
         <div className='headerContainer'>
           {/* header for desktop  with Logo and components Home, Student and Admin */}
           <div className='headerLogoContainer'>
             {/* logo and after clicking this logo, it'll navigates to home route*/}
             <img
-              src='https://res.cloudinary.com/de5cu0mab/image/upload/v1688971136/Logo_Final_uovjgi.png'
+              src='https://res.cloudinary.com/de5cu0mab/image/upload/v1689847926/Logo_ForDark-BG_gx0djs.png'
               alt='logo'
               className="logo"
             />
